@@ -1,7 +1,8 @@
 :root {
   --white: #f6fff8;
   --main: #d90368;
-  --text: #03012c;
+  --text: #2e282a;
+  --pink: #f9b4ed;
 }
 
 * {
@@ -28,4 +29,69 @@ body {
 }
 
 .header {
+  height: 60vh;
+  width: 100%;
+  padding: 0.8rem;
+}
+
+.header .container {
+  background: var(--pink);
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.header .container .navbar {
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 0.8rem;
+}
+
+.header .container .navbar .left {
+  width: 40%;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header .container .navbar .right {
+  width: 10%;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.header .container .navbar .right .profile {
+  border: 1px solid var(--main);
+  height: 60%;
+  border-radius: 30px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px;
+}
+
+.header .container .navbar .right .profile span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+}
+
+.header .container .navbar .right .profile .icon {
+  height: 100%;
+  border-radius: 50%;
+  background: var(--white);
+  width: auto;
+  aspect-ratio: 1/1;
 }
