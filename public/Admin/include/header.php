@@ -1,9 +1,9 @@
 <?php
 session_start();
-if (!isset($_SESSION['is_login'])) {
+if (!isset($_SESSION['loggedIn'])) {
   header("Location: login.php");
 }
-include "config/conn.php";
+include "../config/conn.php";
 ?>
 <html>
 
@@ -16,11 +16,11 @@ include "config/conn.php";
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <script src="https://kit.fontawesome.com/f364b180c9.js" crossorigin="anonymous"></script>
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
   <!-- custom css -->
   <link rel="stylesheet" href="../custom/css/style.css">
   <!-- Select 2 -->

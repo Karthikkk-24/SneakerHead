@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a href="index.php" class="brand-link">
         <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">Aaryansh Electricals</span>
+        <span class="brand-text font-weight-light">Sneaker Head</span>
     </a>
 
     <!-- Sidebar -->
@@ -34,7 +34,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="index.php" class="nav-link <?php echo ($pageTitle === 'Aaryansh Electricals') ? 'active' : ''; ?>">
+                    <a href="index.php" class="nav-link <?php echo ($pageTitle === 'Sneaker Head') ? 'active' : ''; ?>">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -42,134 +42,147 @@
                     </a>
 
                 </li>
-                <li class="nav-item <?php echo ($pageTitle === 'Quotation | Aaryansh Electricals') || ($pageTitle === 'Purchase Order | Aaryansh Electricals') || ($pageTitle === 'Measurement | Aaryansh Electricals') || ($pageTitle === 'Billing | Aaryansh Electricals') ? ' menu-is-opening menu-open' : ''; ?>">
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
-                            Sales & Procurement
+                            Landing Page
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="quotation.php" class="nav-link <?php echo ($pageTitle === 'Quotation | Aaryansh Electricals') ? 'active' : ''; ?>">
+                            <a href="quotation.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Quotation</p>
+                                <p>Banner</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="purchase_order.php" class="nav-link <?php echo ($pageTitle === 'Purchase Order | Aaryansh Electricals') ? 'active' : ''; ?>">
+                            <a href="purchase_order.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Purchase Order</p>
+                                <p>Specials</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="measurement.php" class="nav-link <?php echo ($pageTitle === 'Measurement | Aaryansh Electricals') ? 'active' : ''; ?>">
+                            <a href="measurement.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Measurement</p>
+                                <p>Contact Details</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="billing.php" class="nav-link <?php echo ($pageTitle === 'Billing | Aaryansh Electricals') ? 'active' : ''; ?>">
+                            <a href="billing.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Billing</p>
+                                <p>About</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item <?php echo ($pageTitle === 'Reports | Aaryansh Electricals') ? ' menu-is-opening menu-open' : ''; ?>">
+                <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fa-solid fa-chart-simple"></i>
+                        <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
-                            Reporting & Analytics
+                            Product Section
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="reports.php" class="nav-link <?php echo ($pageTitle === 'Reports | Aaryansh Electricals') ? 'active' : ''; ?>">
+                            <a href="quotation.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Report</p>
+                                <p>Categories</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="measurement.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Sub Categories</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="purchase_order.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Products</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="billing.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Accessories</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item <?php echo ($pageTitle === 'Converter | Aaryansh Electricals') ? ' menu-is-opening menu-open' : ''; ?>">
+                <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fa-solid fa-screwdriver-wrench"></i>
+                        <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
-                            Utilities
+                            Order Management
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="converter.php" class="nav-link <?php echo ($pageTitle === 'Converter | Aaryansh Electricals') ? 'active' : ''; ?>">
+                            <a href="quotation.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Converter</p>
+                                <p>Orders</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="measurement.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Coupons</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="purchase_order.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Average Order Details</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item <?php echo ($pageTitle === 'HR | Aaryansh Electricals') ? ' menu-is-opening menu-open' : ''; ?>">
+                <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fa-solid fa-person"></i>
+                        <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
-                            Human Resources
+                            User Management
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="hr.php" class="nav-link <?php echo ($pageTitle === 'HR | Aaryansh Electricals') ? 'active' : ''; ?>">
+                            <a href="quotation.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>HR</p>
+                                <p>User List</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="measurement.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>User Notification</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item <?php echo ($pageTitle === 'Users | Aaryansh Electricals') || ($pageTitle === 'Roles | Aaryansh Electricals') ? ' menu-is-opening menu-open' : ''; ?>">
+                <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fa-solid fa-user"></i>
+                        <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
-                            Users & Models
+                            Link Management
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="users.php" class="nav-link <?php echo ($pageTitle === 'Users | Aaryansh Electricals') ? 'active' : ''; ?>">
+                            <a href="quotation.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Users</p>
+                                <p>Footer</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="roles.php" class="nav-link <?php echo ($pageTitle === 'Roles | Aaryansh Electricals') ? 'active' : ''; ?>">
+                            <a href="measurement.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Roles</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item <?php echo ($pageTitle === 'Company Master | Aaryansh Electricals') || ($pageTitle === 'Product Master | Aaryansh Electricals') ? ' menu-is-opening menu-open' : ''; ?>">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fa-solid fa-graduation-cap"></i>
-                        <p>
-                            Master Area
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="company_master.php" class="nav-link <?php echo ($pageTitle === 'Company Master | Aaryansh Electricals') ? 'active' : ''; ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Company Master</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="product_master.php" class="nav-link <?php echo ($pageTitle === 'Product Master | Aaryansh Electricals') ? 'active' : ''; ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Product Master</p>
+                                <p>Social Media</p>
                             </a>
                         </li>
                     </ul>
