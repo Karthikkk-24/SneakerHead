@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SneakerHead</title>
+    <script src="https://kit.fontawesome.com/3b8b8364dd.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -25,8 +26,10 @@
                     </div>
                     <div class="right">
                         <div class="profile">
-                            <span>Login</span>
-                            <div class="icon"></div>
+                            <span><a href="pages/login.php">Login</a></span>
+                            <div class="icon">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
                         </div>
                     </div>
                 </div>

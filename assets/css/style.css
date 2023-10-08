@@ -19,6 +19,11 @@ body {
   background: var(--white);
 }
 
+a {
+  text-decoration: none;
+  color: var(--text);
+}
+
 .main_container {
   height: 100%;
   width: 100vw;
@@ -94,4 +99,35 @@ body {
   background: var(--white);
   width: auto;
   aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.navbar .menu span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  position: relative;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.navbar .menu span::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 3px;
+  display: block;
+  margin-top: 5px;
+  right: 0;
+  background: #fff;
+  transition: width 0.2s ease;
+  -webkit-transition: width 0.2s ease;
+}
+
+.navbar .menu span:hover:after {
+  width: 100%;
+  left: 0;
+  background: #fff;
 }
