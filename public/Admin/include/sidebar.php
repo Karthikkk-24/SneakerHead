@@ -52,25 +52,25 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="quotation.php" class="nav-link">
+                            <a href="banner.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Banner</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="purchase_order.php" class="nav-link">
+                            <a href="specials.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Specials</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="measurement.php" class="nav-link">
+                            <a href="contact.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Contact Details</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="billing.php" class="nav-link">
+                            <a href="about.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>About</p>
                             </a>
@@ -87,25 +87,25 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="quotation.php" class="nav-link">
+                            <a href="categories.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Categories</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="measurement.php" class="nav-link">
+                            <a href="sub_categories.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Sub Categories</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="purchase_order.php" class="nav-link">
+                            <a href="products.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Products</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="billing.php" class="nav-link">
+                            <a href="accessories.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Accessories</p>
                             </a>
@@ -122,19 +122,19 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="quotation.php" class="nav-link">
+                            <a href="orders.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Orders</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="measurement.php" class="nav-link">
+                            <a href="coupons.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Coupons</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="purchase_order.php" class="nav-link">
+                            <a href="average_order.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Average Order Details</p>
                             </a>
@@ -151,13 +151,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="quotation.php" class="nav-link">
+                            <a href="users.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>User List</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="measurement.php" class="nav-link">
+                            <a href="user_notification.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>User Notification</p>
                             </a>
@@ -174,13 +174,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="quotation.php" class="nav-link">
+                            <a href="footer.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Footer</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="measurement.php" class="nav-link">
+                            <a href="social_media.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Social Media</p>
                             </a>
