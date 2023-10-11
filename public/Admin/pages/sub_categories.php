@@ -1,4 +1,4 @@
-<?php $pageTitle = 'Banner'; ?>
+<?php $pageTitle = 'Sub Category'; ?>
 <?php include '../include/header.php' ?>
 
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
