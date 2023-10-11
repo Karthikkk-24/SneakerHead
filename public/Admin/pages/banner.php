@@ -43,11 +43,11 @@
                                 <form action="" class="row" method="POST">
                                     <div class="col-md-6 form-group">
                                         <label class="form-label" for="">Image</label>
-                                        <input class="form-control" type="file" name="image" id="">
+                                        <input class="form-control" type="file" name="image" id="" required>
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label class="form-label" for="">Image 2</label>
-                                        <input class="form-control" type="file" name="image_2" id="">
+                                        <input class="form-control" type="file" name="image_2" id="" required>
                                     </div>
                                 </form>
                             </div>

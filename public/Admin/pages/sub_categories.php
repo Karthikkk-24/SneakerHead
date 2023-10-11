@@ -43,13 +43,13 @@
                                 <form action="" class="row" method="POST">
                                     <div class="col-md-6 form-group">
                                         <label class="form-label" for="">Select Category</label>
-                                        <select class="form-control" name="category_id">
+                                        <select class="form-control" name="category_id" required>
                                             <option value="">Select Category</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label class="form-label" for="">Sub Category Name</label>
-                                        <input class="form-control" type="text" placeholder="Enter Sub Category Name" name="sub_category_name" id="">
+                                        <input class="form-control" type="text" placeholder="Enter Sub Category Name" name="sub_category_name" id="" required>
                                     </div>
                                 </form>
                             </div>

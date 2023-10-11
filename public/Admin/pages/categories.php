@@ -43,7 +43,7 @@
                                 <form action="" class="row" method="POST">
                                     <div class="col-md-6 form-group">
                                         <label class="form-label" for="">Category Name</label>
-                                        <input class="form-control" type="text" placeholder="Enter Category Name" name="category_name" id="">
+                                        <input class="form-control" type="text" placeholder="Enter Category Name" name="category_name" id="" required>
                                     </div>
                                 </form>
                             </div>
