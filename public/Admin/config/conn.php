@@ -5,6 +5,9 @@ $username = "root";
 $password = "";
 $database = "sneakerhead_db";
 
+date_default_timezone_set('Asia/Kolkata');
+
+
 try {
     
     $pdo = new PDO("mysql:host=$host;dbname=$database", $username, $password);
