@@ -111,13 +111,14 @@ if (isset($_POST['submit'])) {
                     success: function(response) {
                         console.log(response);
                         const parsedResponse = JSON.parse(response);
+                        console.log(parsedResponse);
                         getCategoryData.innerHTML = '';
                         for (let i = 0; i < parsedResponse.length; i++) {
                             getCategoryData.innerHTML += `
                                 <tr>
                                     <td>${parsedResponse[i].count}</td>
                                     <td>${parsedResponse[i].category_name}</td>
-                                    <td><a href="edit-category.php?id=${parsedResponse[i].id}" class="btn btn-primary">Edit</a>&emsp;<a href="edit-category.php?id=${parsedResponse[i].id}" class="btn btn-danger">Delete</a></td>
+                                    <td><a href="edit-category.php?id=${parsedResponse[i].id}" class="text text-primary"><i class="fa-solid fa-pen-to-square"></i></a>&emsp;<a href="edit-category.php?id=${parsedResponse[i].id}" class="text text-danger"><i class="fa-solid fa-trash-can"></i></a></td>
                                 </tr>`;
                         }
                     }

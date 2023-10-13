@@ -19,10 +19,10 @@ if ($result->rowCount() > 0) {
             'category_name' => $row['category_name'],
             'updated_at' => $row['updated_at']    
         ];
+        $counter++;
     }
 
     echo json_encode($categoryData);
 }
-
 
 ?>

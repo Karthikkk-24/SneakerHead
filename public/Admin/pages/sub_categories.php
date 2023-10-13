@@ -67,7 +67,7 @@
                                             <th>Sub Category</th>
                                             <th>Action</th>
                                         </thead>
-                                        <tbody></tbody>
+                                        <tbody id="getSubCategoryData"></tbody></tbody>
                                     </table>
                                 </div>
                             </div>
@@ -80,6 +80,35 @@
         <!-- /.content-wrapper -->
 
         <?php include '../include/footer.php'; ?>
+
+        <script>
+            const getSubCategoryData = document.getElementById('getSubCategoryData');
+            window.addEventListener('load', () => {
+                getCategories();
+            });
+
+            function getCategories() {
+                $.ajax({
+                    url: '../ajax/getSubCategories.php',
+                    type: 'POST',
+                    success: function(response) {
+                        console.log(response);
+                        const parsedResponse = JSON.parse(response);
+                        console.log(parsedResponse);
+                        getCategoryData.innerHTML = '';
+                        for (let i = 0; i < parsedResponse.length; i++) {
+                            getCategoryData.innerHTML += `
+                                <tr>
+                                    <td>${parsedResponse[i].count}</td>
+                                    <td>${parsedResponse[i].category_name}</td>
+                                    <td>${parsedResponse[i].subcategory_name}</td>
+                                    <td><a href="edit-category.php?id=${parsedResponse[i].id}" class="text text-primary"><i class="fa-solid fa-pen-to-square"></i></a>&emsp;<a href="edit-category.php?id=${parsedResponse[i].id}" class="text text-danger"><i class="fa-solid fa-trash-can"></i></a></td>
+                                </tr>`;
+                        }
+                    }
+                })
+            }
+        </script>
 
 </body>
 
