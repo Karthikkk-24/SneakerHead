@@ -83,7 +83,7 @@ if (isset($_POST['submit'])) {
                                             <th>Category Name</th>
                                             <th>Action</th>
                                         </thead>
-                                        <tbody></tbody>
+                                        <tbody id="getCategoryData"></tbody>
                                     </table>
                                 </div>
                             </div>
@@ -94,8 +94,26 @@ if (isset($_POST['submit'])) {
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
+        
 
         <?php include '../include/footer.php'; ?>
+
+        <script>
+            const getCategoryData = document.getElementById('getCategoryData');
+            window.addEventListener('load', () => {
+                getCategories();
+            });
+
+            function getCategories() {
+                $.ajax({
+                    url: '../ajax/getCategories.php',
+                    type: 'POST',
+                    success: function(response) {
+                        console.log(response);
+                    }
+                })
+            }
+        </script>
 
 </body>
 
