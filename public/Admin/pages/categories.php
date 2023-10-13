@@ -6,7 +6,7 @@ $currentDateTime = date('Y-m-d H:i:s');
 
 if (isset($_POST['submit'])) {
     $category_name = $_POST['category_name'];
-    
+
     $addCategory = "INSERT INTO tbl_category (category_name, updated_at) VALUES (:category_name, :updated_at)";
     $stmt = $pdo->prepare($addCategory);
 
@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
     $stmt->bindParam(':updated_at', $currentDateTime);
 
     $stmt->execute();
-    
+
     header("Location: categories.php");
     exit();
 }
@@ -94,7 +94,7 @@ if (isset($_POST['submit'])) {
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        
+
 
         <?php include '../include/footer.php'; ?>
 
@@ -110,6 +110,16 @@ if (isset($_POST['submit'])) {
                     type: 'POST',
                     success: function(response) {
                         console.log(response);
+                        const parsedResponse = JSON.parse(response);
+                        getCategoryData.innerHTML = '';
+                        for (let i = 0; i < parsedResponse.length; i++) {
+                            getCategoryData.innerHTML += `
+                                <tr>
+                                    <td>${parsedResponse[i].count}</td>
+                                    <td>${parsedResponse[i].category_name}</td>
+                                    <td><a href="edit-category.php?id=${parsedResponse[i].id}" class="btn btn-primary">Edit</a>&emsp;<a href="edit-category.php?id=${parsedResponse[i].id}" class="btn btn-danger">Delete</a></td>
+                                </tr>`;
+                        }
                     }
                 })
             }
