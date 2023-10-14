@@ -43,7 +43,7 @@
                                 <form action="" class="row" method="POST">
                                     <div class="col-md-6 form-group">
                                         <label class="form-label" for="">Select Category</label>
-                                        <select class="form-control" name="category_id" required>
+                                        <select class="form-control" id="categoryNames" name="category_id" required>
                                             <option value="">Select Category</option>
                                         </select>
                                     </div>
@@ -67,7 +67,8 @@
                                             <th>Sub Category</th>
                                             <th>Action</th>
                                         </thead>
-                                        <tbody id="getSubCategoryData"></tbody></tbody>
+                                        <tbody id="getSubCategoryData"></tbody>
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -83,16 +84,33 @@
 
         <script>
             const getSubCategoryData = document.getElementById('getSubCategoryData');
+            const categoryNamesTag = document.getElementById('categoryNames');
+
             window.addEventListener('load', () => {
+                categoryNames();
                 getCategories();
             });
+
+            function categoryNames() {
+                $.ajax({
+                    url: '../ajax/getCategoryNames.php',
+                    type: 'POST',
+                    success: function(response) {
+                        const parsedResponse = JSON.parse(response);
+                        for (let i = 0; i < parsedResponse.length; i++) {
+                            categoryNamesTag.innerHTML += `
+                                <option value="${parsedResponse[i].id}">${parsedResponse[i].category_name}</option>`
+                        }
+                    }
+                });
+            }
 
             function getCategories() {
                 $.ajax({
                     url: '../ajax/getSubCategories.php',
                     type: 'POST',
                     success: function(response) {
-                        console.log(response);
+                        // console.log(response);
                         const parsedResponse = JSON.parse(response);
                         console.log(parsedResponse);
                         getCategoryData.innerHTML = '';
