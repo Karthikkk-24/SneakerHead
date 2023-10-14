@@ -20,7 +20,7 @@ if ($result->rowCount() > 0) {
         $subCategoryData[] = [
             'count' => $counter,
             'id' => $row['id'],
-            'category_name' => $categoryName,
+            'category_name' => $categoryName['category_name'],
             'subcategory_name' => $row['subcategory_name'],  
             'updated_at' => $row['updated_at']    
         ];

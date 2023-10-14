@@ -1,6 +1,29 @@
 <?php $pageTitle = 'Sub Category'; ?>
 <?php include '../include/header.php' ?>
 
+<?php
+
+if (isset($_POST['submit'])) {
+    $category_id = $_POST['category_id'];
+    $subcategory_name = $_POST['subcategory_name'];
+    $currentDateTime = date('Y-m-d H:i:s');
+
+    $addSubCategory = "INSERT INTO tbl_subcategory (category_id, subcategory_name, updated_at) VALUES (:category_id, :subcategory_name, :updated_at)";
+
+    $stmt = $pdo->prepare($addSubCategory);
+
+    $stmt->bindParam(':category_id', $category_id);
+    $stmt->bindParam(':subcategory_name', $subcategory_name);
+    $stmt->bindParam(':updated_at', $currentDateTime);
+
+    $stmt->execute();
+
+    header("Location: sub_categories.php");
+    exit();
+}
+
+?>
+
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
 
@@ -49,7 +72,10 @@
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label class="form-label" for="">Sub Category Name</label>
-                                        <input class="form-control" type="text" placeholder="Enter Sub Category Name" name="sub_category_name" id="" required>
+                                        <input class="form-control" type="text" placeholder="Enter Sub Category Name" name="subcategory_name" id="" required>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button class="btn btn-primary" type="submit" name="submit">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -113,9 +139,9 @@
                         // console.log(response);
                         const parsedResponse = JSON.parse(response);
                         console.log(parsedResponse);
-                        getCategoryData.innerHTML = '';
+                        getSubCategoryData.innerHTML = '';
                         for (let i = 0; i < parsedResponse.length; i++) {
-                            getCategoryData.innerHTML += `
+                            getSubCategoryData.innerHTML += `
                                 <tr>
                                     <td>${parsedResponse[i].count}</td>
                                     <td>${parsedResponse[i].category_name}</td>
