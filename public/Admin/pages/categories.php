@@ -101,10 +101,10 @@ if (isset($_POST['submit'])) {
         <script>
             const getCategoryData = document.getElementById('getCategoryData');
             window.addEventListener('load', () => {
-                getCategories();
+                fetchCategories();
             });
 
-            function getCategories() {
+            function fetchCategories() {
                 $.ajax({
                     url: '../ajax/getCategories.php',
                     type: 'POST',

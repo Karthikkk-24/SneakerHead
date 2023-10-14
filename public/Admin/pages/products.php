@@ -1,6 +1,33 @@
 <?php $pageTitle = 'Products'; ?>
 <?php include '../include/header.php' ?>
 
+<?php
+
+if (isset($_POST['submit'])) {
+    $currentDateTime = date('Y-m-d H:i:s');
+
+    $category_id = $_POST['category_id'];
+    $subcategory_id = $_POST['subcategory_id'];
+    $product_name = $_POST['product_name'];
+
+    $addProduct = "INSERT INTO tbl_products (category_id, subcategory_id, product_name, updated_at) VALUES (:category_id, :subcategory_id, :product_name, :updated_at)";
+
+    $stmt = $pdo->prepare($addProduct);
+
+    $stmt->bindParam(':category_id', $category_id); 
+    $stmt->bindParam(':subcategory_id', $subcategory_id);
+    $stmt->bindParam(':product_name', $product_name);
+    $stmt->bindParam(':updated_at', $currentDateTime);
+
+    $stmt->execute();
+
+    header("Location: products.php");
+    exit();
+
+}
+
+?>
+
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
 
@@ -49,13 +76,16 @@
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label class="form-label" for="">Select Sub Category</label>
-                                        <select class="form-control" id="subCategoryNames" name="sub_category_id" required>
+                                        <select class="form-control" id="subCategoryNames" name="subcategory_id" required>
                                             <option value="">Select Sub Category</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label class="form-label" for="">Product Name</label>
-                                        <input class="form-control" type="text" placeholder="Enter Category Name" name="category_name" id="" required>
+                                        <input class="form-control" type="text" placeholder="Enter Product Name" name="product_name" id="" required>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button class="btn btn-primary" type="submit" name="submit">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -74,7 +104,7 @@
                                             <th>Product Name</th>
                                             <th>Action</th>
                                         </thead>
-                                        <tbody></tbody>
+                                        <tbody id="getProductData"></tbody>
                                     </table>
                                 </div>
                             </div>
@@ -90,16 +120,40 @@
         <script>
             const categoryNamesTag = document.getElementById('categoryNames');
             const subCategoryNamesTag = document.getElementById('subCategoryNames');
-
+            const getProductData = document.getElementById('getProductData');
 
             window.addEventListener('load', () => {
                 categoryNames();
+                fetchProductData();
             });
 
             categoryNamesTag.addEventListener('change', () => {
                 subCategoryNamesTag.innerHTML = '';
                 subCategoryNames();
             });
+
+            function fetchProductData() {
+                $.ajax({
+                    url: '../ajax/getProductData.php',
+                    type: 'POST',
+                    success: function(response) {
+                        console.log(response);
+                        const parsedResponse = JSON.parse(response);
+                        getProductData.innerHTML = '';
+                        for (let i = 0; i < parsedResponse.length; i++) {
+                            
+                            getProductData.innerHTML += `
+                                <tr>
+                                    <td>${parsedResponse[i].count}</td>
+                                    <td>${parsedResponse[i].category_name}</td>
+                                    <td>${parsedResponse[i].subcategory_name}</td>
+                                    <td>${parsedResponse[i].product_name}</td>
+                                    <td><a href="edit-category.php?id=${parsedResponse[i].id}" class="text text-primary"><i class="fa-solid fa-pen-to-square"></i></a>&emsp;<a href="edit-category.php?id=${parsedResponse[i].id}" class="text text-danger"><i class="fa-solid fa-trash-can"></i></a></td>
+                                </tr>`;
+                        }
+                    }
+                })
+            }
 
             function categoryNames() {
                 $.ajax({

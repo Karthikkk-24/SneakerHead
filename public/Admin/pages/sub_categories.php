@@ -100,13 +100,15 @@ if (isset($_POST['submit'])) {
                             </div>
                         </div>
                     </div>
+                    <br>
+                    <br>
                 </div><!--/. container-fluid -->
             </section>
             <!-- /.content -->
         </div>
+        <?php include '../include/footer.php'; ?> 
         <!-- /.content-wrapper -->
 
-        <?php include '../include/footer.php'; ?>
 
         <script>
             const getSubCategoryData = document.getElementById('getSubCategoryData');
@@ -114,7 +116,7 @@ if (isset($_POST['submit'])) {
 
             window.addEventListener('load', () => {
                 categoryNames();
-                getCategories();
+                fetchSubCategories();
             });
 
             function categoryNames() {
@@ -131,7 +133,7 @@ if (isset($_POST['submit'])) {
                 });
             }
 
-            function getCategories() {
+            function fetchSubCategories() {
                 $.ajax({
                     url: '../ajax/getSubCategories.php',
                     type: 'POST',
