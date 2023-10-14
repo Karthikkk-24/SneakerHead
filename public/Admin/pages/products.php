@@ -137,7 +137,6 @@ if (isset($_POST['submit'])) {
                     url: '../ajax/getProductData.php',
                     type: 'POST',
                     success: function(response) {
-                        console.log(response);
                         const parsedResponse = JSON.parse(response);
                         getProductData.innerHTML = '';
                         for (let i = 0; i < parsedResponse.length; i++) {

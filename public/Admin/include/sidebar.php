@@ -187,6 +187,41 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>
+                            News Section
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="upcoming.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Upcoming</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="top_deals.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Top Deals</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="rating.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Ratings</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="best_sellers.php" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Best Sellers</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
             </ul>
         </nav>
