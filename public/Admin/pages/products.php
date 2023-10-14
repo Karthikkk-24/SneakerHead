@@ -43,13 +43,13 @@
                                 <form action="" class="row" method="POST">
                                     <div class="col-md-6 form-group">
                                         <label class="form-label" for="">Select Category</label>
-                                        <select class="form-control" name="category_id" required>
+                                        <select class="form-control" id="categoryNames" name="category_id" required>
                                             <option value="">Select Category</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label class="form-label" for="">Select Sub Category</label>
-                                        <select class="form-control" name="sub_category_id" required>
+                                        <select class="form-control" id="subCategoryNames" name="sub_category_id" required>
                                             <option value="">Select Sub Category</option>
                                         </select>
                                     </div>
@@ -87,7 +87,51 @@
         <!-- /.content-wrapper -->
 
         <?php include '../include/footer.php'; ?>
+        <script>
+            const categoryNamesTag = document.getElementById('categoryNames');
+            const subCategoryNamesTag = document.getElementById('subCategoryNames');
 
+
+            window.addEventListener('load', () => {
+                categoryNames();
+            });
+
+            categoryNamesTag.addEventListener('change', () => {
+                subCategoryNamesTag.innerHTML = '';
+                subCategoryNames();
+            });
+
+            function categoryNames() {
+                $.ajax({
+                    url: '../ajax/getCategoryNames.php',
+                    type: 'POST',
+                    success: function(response) {
+                        const parsedResponse = JSON.parse(response);
+                        for (let i = 0; i < parsedResponse.length; i++) {
+                            categoryNamesTag.innerHTML += `
+                                <option value="${parsedResponse[i].id}">${parsedResponse[i].category_name}</option>`
+                        }
+                    }
+                });
+            }
+
+            function subCategoryNames() {
+                $.ajax({
+                    url: '../ajax/getSubCategoryNames.php',
+                    type: 'POST',
+                    data: {
+                        category_id: categoryNamesTag.value
+                    },
+                    success: function(response) {
+                        const parsedResponse = JSON.parse(response);
+                        for (let i = 0; i < parsedResponse.length; i++) {
+                            subCategoryNamesTag.innerHTML += `
+                                <option value="${parsedResponse[i].id}">${parsedResponse[i].sub_category_name}</option>`;
+                        }
+                    }
+                });
+            }
+        </script>
 </body>
 
 </html>
