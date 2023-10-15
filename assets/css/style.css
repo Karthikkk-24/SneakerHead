@@ -169,6 +169,7 @@ a {
 .content .container .horizontal_cards .card_heading {
     display: flex;
     width: 100%;
+    padding: 1vh 2vw;
     height: 30%;
 }
 
@@ -178,6 +179,7 @@ a {
     justify-content: space-between;
     width: 100%;
     height: 70%;
+    padding: 1vh 2vw;
 }
 
 .content .container .horizontal_cards .card_body .card {
@@ -187,17 +189,26 @@ a {
     background: var(--pink);
     border-radius: 12px;
     overflow: hidden;
+    transition: 0.5s;
     position: relative;
 }
 
 .content .container .horizontal_cards .card_body .card .overlay {
-    height: 50%;
+    height: 0;
     width: 100%;
-    display: none;
     align-items: center;
     justify-content: center;
-    background: black;
+    background: rgba(0, 0, 0, 0.5);
     position: absolute;
     bottom: 0;
     left: 0;
+    opacity: 0;
+    transition: height 0.3s ease-in, opacity 0.3s ease-in;
 }
+
+.content .container .horizontal_cards .card_body .card:hover .overlay {
+    height: 40%;
+    opacity: 1;
+}
+
+
