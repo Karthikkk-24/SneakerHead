@@ -35,6 +35,8 @@ if ($result->rowCount() > 0) {
     }
 
     echo json_encode($ProductsData);
+} else {
+    echo json_encode([]);
 }
 
 ?>

@@ -21,6 +21,8 @@ if ($runSubCategory->rowCount() > 0) {
     }
 
     echo json_encode($subCategory);
+} else {
+    echo json_encode([]);
 }
 
 ?>

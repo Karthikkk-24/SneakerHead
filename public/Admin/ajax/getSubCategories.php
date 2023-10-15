@@ -28,6 +28,8 @@ if ($result->rowCount() > 0) {
     }
 
     echo json_encode($subCategoryData);
+} else {
+    echo json_encode([]);
 }
 
 ?>

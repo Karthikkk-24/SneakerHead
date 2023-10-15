@@ -1,6 +1,29 @@
 <?php $pageTitle = 'Accessories'; ?>
 <?php include '../include/header.php' ?>
 
+<?php
+
+if (isset($_POST['submit'])) {
+    $currentDateTime = date('Y-m-d H:i:s');
+    $product_id = $_POST['product_id'];
+    $accessories_name = $_POST['accessories_name'];
+
+    $insertAccessories = "INSERT INTO tbl_accessories (product_id, accessories_name, created_at) VALUES (:product_id, :accessories_name, :updated_at)";
+    
+    $stmt = $pdo->prepare($insertAccessories);
+
+    $stmt->bindParam(':product_id', $product_id);
+    $stmt->bindParam(':accessories_name', $accessories_name);
+    $stmt->bindParam(':updated_at', $currentDateTime);
+
+    $stmt->execute();
+
+    header("Location: accessories.php");
+    exit();
+}
+
+?>
+
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
 
@@ -70,7 +93,7 @@
                                             <th>Accessories</th>
                                             <th>Action</th>
                                         </thead>
-                                        <tbody></tbody>
+                                        <tbody id="accessories_list"></tbody>
                                     </table>
                                 </div>
                             </div>
@@ -86,6 +109,7 @@
 
         <script>
             const getProductDataTag = document.getElementById('getProductData');
+            const accessoriesList = document.getElementById('accessories_list');
 
             window.addEventListener('load', () => {
                 fetchProducts();
@@ -107,7 +131,22 @@
             }
 
             function fetchAccessories() {
-
+                $.ajax({
+                    url: '../ajax/getAccessories.php',
+                    type: 'POST',
+                    success: function(response) {
+                        const parsedResponse = JSON.parse(response);
+                        for (let i = 0; i < parsedResponse.length; i++) {
+                            accessoriesList.innerHTML += `
+                                <tr>
+                                    <td>${parsedResponse[i].count}</td>
+                                    <td>${parsedResponse[i].product_name}</td>
+                                    <td>${parsedResponse[i].accessories_name}</td>
+                                    <td><a href="edit-category.php?id=${parsedResponse[i].id}" class="text text-primary"><i class="fa-solid fa-pen-to-square"></i></a>&emsp;<a href="edit-category.php?id=${parsedResponse[i].id}" class="text text-danger"><i class="fa-solid fa-trash-can"></i></a></td>
+                                </tr>`;
+                        }
+                    }
+                })
             }
         </script>
 

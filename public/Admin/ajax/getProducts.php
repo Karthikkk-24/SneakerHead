@@ -17,7 +17,7 @@ if ($result->rowCount() > 0) {
 
         $ProductsData[] = [
             'count' => $counter,
-            'product_id' => $product_id,
+            'id' => $product_id,
             'product_name' => $product_name
         ];
 
@@ -25,6 +25,8 @@ if ($result->rowCount() > 0) {
     }
 
     echo json_encode($ProductsData);
+} else {
+    echo json_encode([]);
 }
 
 ?>
