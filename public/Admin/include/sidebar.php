@@ -34,7 +34,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="index.php" class="nav-link <?php echo ($pageTitle === 'Sneaker Head') ? 'active' : ''; ?>">
+                    <a href="dashboard.php" class="nav-link <?= ($pageTitle === 'Dashboard') ? 'active' : ''; ?>">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -42,8 +42,8 @@
                     </a>
 
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item <?= ($pageTitle === 'Banner') || ($pageTitle === 'Specials') || ($pageTitle === 'Contact') || ($pageTitle === 'About') ? 'menu-is-opening menu-open' : ''; ?>">
+                    <a href="#" class="nav-link <?= ($pageTitle === 'Banner') || ($pageTitle === 'Specials') || ($pageTitle === 'Contact') || ($pageTitle === 'About') ? 'active' : ''; ?>">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
                             Landing Page
@@ -52,33 +52,33 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="banner.php" class="nav-link">
+                            <a href="banner.php" class="nav-link <?= ($pageTitle === 'Banner') ? 'active' : ''; ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Banner</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="specials.php" class="nav-link">
+                            <a href="specials.php" class="nav-link <?= ($pageTitle === 'Specials') ? 'active' : ''; ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Specials</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="contact.php" class="nav-link">
+                            <a href="contact.php" class="nav-link <?= ($pageTitle === 'Contact') ? 'active' : ''; ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Contact Details</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="about.php" class="nav-link">
+                            <a href="about.php" class="nav-link <?= ($pageTitle === 'About') ? 'active' : ''; ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>About</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item <?= ($pageTitle === 'Category') || ($pageTitle === 'Sub Category') || ($pageTitle === 'Products') || ($pageTitle === 'Accessories') ? 'menu-is-opening menu-open' : ''; ?>">
+                    <a href="#" class="nav-link <?= ($pageTitle === 'Category') || ($pageTitle === 'Sub Category') || ($pageTitle === 'Products') || ($pageTitle === 'Accessories') ? 'active' : ''; ?>">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
                             Product Section
@@ -87,33 +87,33 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="categories.php" class="nav-link">
+                            <a href="categories.php" class="nav-link <?= ($pageTitle === 'Category') ? 'active' : ''; ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Categories</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="sub_categories.php" class="nav-link">
+                            <a href="sub_categories.php" class="nav-link <?= ($pageTitle === 'Sub Category') ? 'active' : ''; ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Sub Categories</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="products.php" class="nav-link">
+                            <a href="products.php" class="nav-link <?= ($pageTitle === 'Products') ? 'active' : ''; ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Products</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="accessories.php" class="nav-link">
+                            <a href="accessories.php" class="nav-link <?= ($pageTitle === 'Accessories') ? 'active' : ''; ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Accessories</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item <?= ($pageTitle === 'Orders') || ($pageTitle === 'Coupons') || ($pageTitle === 'Average Order Details') ? 'menu-is-opening menu-open' : ''; ?>">
+                    <a href="#" class="nav-link <?= ($pageTitle === 'Orders') || ($pageTitle === 'Coupons') || ($pageTitle === 'Average Order Details') ? 'active' : ''; ?>">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
                             Order Management
@@ -122,27 +122,27 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="orders.php" class="nav-link">
+                            <a href="orders.php" class="nav-link <?= ($pageTitle === 'Orders') ? 'active' : ''; ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Orders</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="coupons.php" class="nav-link">
+                            <a href="coupons.php" class="nav-link <?= ($pageTitle === 'Coupons') ? 'active' : ''; ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Coupons</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="average_order.php" class="nav-link">
+                            <a href="average_order.php" class="nav-link <?= ($pageTitle === 'Average Order Details') ? 'active' : ''; ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Average Order Details</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item <?= ($pageTitle === 'User List') || ($pageTitle === 'User Notification') ? 'menu-is-opening menu-open' : ''; ?>">
+                    <a href="#" class="nav-link <?= ($pageTitle === 'User List') || ($pageTitle === 'User Notification') ? 'active' : ''; ?>">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
                             User Management
@@ -151,21 +151,21 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="users.php" class="nav-link">
+                            <a href="users.php" class="nav-link <?= ($pageTitle === 'User List') ? 'active' : ''; ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>User List</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="user_notification.php" class="nav-link">
+                            <a href="user_notification.php" class="nav-link <?= ($pageTitle === 'User Notification') ? 'active' : ''; ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>User Notification</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item <?= ($pageTitle === 'Footer') || ($pageTitle === 'Social Media') ? 'menu-is-opening menu-open' : ''; ?>">
+                    <a href="#" class="nav-link <?= ($pageTitle === 'Footer') || ($pageTitle === 'Social Media') ? 'active' : ''; ?>">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
                             Link Management
@@ -174,21 +174,21 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="footer.php" class="nav-link">
+                            <a href="footer.php" class="nav-link <?= ($pageTitle === 'Footer') ? 'active' : ''; ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Footer</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="social_media.php" class="nav-link">
+                            <a href="social_media.php" class="nav-link <?= ($pageTitle === 'Social Media') ? 'active' : ''; ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Social Media</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item <?= ($pageTitle === 'Upcoming') || ($pageTitle === 'Top Deals') || ($pageTitle === 'Ratings') || ($pageTitle === 'Best Sellers') ? 'menu-is-opening menu-open' : ''; ?>">
+                    <a href="#" class="nav-link <?= ($pageTitle === 'Upcoming') || ($pageTitle === 'Top Deals') || ($pageTitle === 'Ratings') || ($pageTitle === 'Best Sellers') ? 'active' : ''; ?>">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
                             News Section
@@ -197,25 +197,25 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="upcoming.php" class="nav-link">
+                            <a href="upcoming.php" class="nav-link <?= ($pageTitle === 'Upcoming') ? 'active' : ''; ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Upcoming</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="top_deals.php" class="nav-link">
+                            <a href="top_deals.php" class="nav-link <?= ($pageTitle === 'Top Deals') ? 'active' : ''; ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Top Deals</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="rating.php" class="nav-link">
+                            <a href="rating.php" class="nav-link <?= ($pageTitle === 'Ratings') ? 'active' : ''; ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Ratings</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="best_sellers.php" class="nav-link">
+                            <a href="best_sellers.php" class="nav-link <?= ($pageTitle === 'Best Sellers') ? 'active' : ''; ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Best Sellers</p>
                             </a>
