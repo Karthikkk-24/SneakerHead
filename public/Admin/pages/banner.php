@@ -8,9 +8,10 @@ if (isset($_POST['submit'])) {
 
     $filename = $_FILES['image']['name'];
     $tempname = $_FILES['image']['tmp_name'];
-    $banner_location = '../../uploads/banners/' . $filename;
+    $banner_location = 'uploads/banners/' . $filename;
+    $file_location = '../../uploads/banners/' . $filename;
 
-    move_uploaded_file($tempname, $banner_location);
+    move_uploaded_file($tempname, $file_location);
 
     $sql = "INSERT INTO tbl_banner (banner_image, banner_location, updated_at) VALUES (:file_name, :banner_location, :updated_at)";
 

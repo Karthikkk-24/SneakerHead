@@ -44,6 +44,10 @@ a {
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 .header .container .navbar {
   height: 20%;
@@ -54,12 +58,18 @@ a {
   padding: 0 0.8rem;
 }
 .header .container .navbar .left {
-  width: 40%;
+  width: 50%;
   display: flex;
   height: 100%;
   align-items: center;
   justify-content: space-between;
 }
+.header .container .navbar .left .menu {
+    background: white;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+}
+
 .header .container .navbar .right {
   width: 10%;
   display: flex;
@@ -69,6 +79,7 @@ a {
 }
 .header .container .navbar .right .profile {
   border: 1px solid var(--main);
+  background: var(--white);
   height: 60%;
   border-radius: 30px;
   width: 100%;
@@ -86,7 +97,7 @@ a {
 .header .container .navbar .right .profile .icon {
   height: 100%;
   border-radius: 50%;
-  background: var(--white);
+  background: var(--text);
   width: auto;
   aspect-ratio: 1/1;
   display: flex;
@@ -95,12 +106,20 @@ a {
   font-size: 1.1rem;
 }
 
+.header .container .navbar .right .profile .icon i {
+  color: var(--white);
+}
+
 .navbar .menu span {
   font-size: 1.2rem;
   font-weight: bold;
   position: relative;
   cursor: pointer;
   margin-right: 1rem;
+}
+
+.navbar .menu span:last-child {
+    margin-right: 0px;
 }
 
 .navbar .menu span::after {
@@ -119,5 +138,5 @@ a {
 .navbar .menu span:hover:after {
   width: 100%;
   left: 0;
-  background: #fff;
+  background: var(--text);
 }

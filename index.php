@@ -12,7 +12,7 @@
 <body>
     <div class="main_container">
         <div class="header">
-            <div class="container">
+            <div class="container" id="bannerContainer">
                 <div class="navbar">
                     <div class="left">
                         <div class="logo"></div>
