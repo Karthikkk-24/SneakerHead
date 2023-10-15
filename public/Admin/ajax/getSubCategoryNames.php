@@ -4,7 +4,7 @@ include '../config/conn.php';
 
 $category_id = $_POST['category_id'];
 
-$getSubCategory = "SELECT * FROM tbl_subcategory WHERE category_id = '$category_id'";
+$getSubCategory = "SELECT * FROM `tbl_subcategory` WHERE category_id = '$category_id'";
 
 $runSubCategory = $pdo->prepare($getSubCategory);
 

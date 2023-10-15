@@ -1,6 +1,33 @@
 <?php $pageTitle = 'Banner'; ?>
 <?php include '../include/header.php' ?>
 
+<?php
+
+if (isset($_POST['submit'])) {
+    $currentDateTime = date('Y-m-d');
+
+    $filename = $_FILES['image']['name'];
+    $tempname = $_FILES['image']['tmp_name'];
+    $banner_location = '../../uploads/banners/' . $filename;
+
+    move_uploaded_file($tempname, $banner_location);
+
+    $sql = "INSERT INTO tbl_banner (banner_image, banner_location, updated_at) VALUES (:file_name, :banner_location, :updated_at)";
+
+    $stmt = $pdo->prepare($sql);
+
+    $stmt->bindParam(':file_name', $filename);
+    $stmt->bindParam(':banner_location', $banner_location);
+    $stmt->bindParam(':updated_at', $currentDateTime);
+
+    $stmt->execute();
+
+    header("Location: banner.php");
+    exit();
+}
+
+?>
+
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
 
@@ -40,14 +67,13 @@
                                 <h3 class="card-title">Create Banner</h3>
                             </div>
                             <div class="card-body">
-                                <form action="" class="row" method="POST">
+                                <form action="" class="row" method="POST" enctype="multipart/form-data">
                                     <div class="col-md-6 form-group">
                                         <label class="form-label" for="">Image</label>
                                         <input class="form-control" type="file" name="image" id="" required>
                                     </div>
-                                    <div class="col-md-6 form-group">
-                                        <label class="form-label" for="">Image 2</label>
-                                        <input class="form-control" type="file" name="image_2" id="" required>
+                                    <div class="col-md-12">
+                                        <button class="btn btn-primary" type="submit" name="submit">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -65,7 +91,7 @@
                                             <th>Date</th>
                                             <th>Action</th>
                                         </thead>
-                                        <tbody></tbody>
+                                        <tbody id="banner_list"></tbody>
                                     </table>
                                 </div>
                             </div>
@@ -78,6 +104,34 @@
         <!-- /.content-wrapper -->
 
         <?php include '../include/footer.php'; ?>
+
+        <script>
+            const bannerList = document.getElementById('banner_list');
+
+            window.addEventListener('load', () => {
+                fetchBanners();
+            });
+
+            function fetchBanners() {
+                $.ajax({
+                    url: '../ajax/getBanners.php',
+                    method: 'POST',
+                    success: function(response) {
+                        console.log(response);
+                        const parsedResponse = JSON.parse(response);
+                        for (let i = 0; i < parsedResponse.length; i++) {
+                            bannerList.innerHTML += `
+                                <tr>
+                                    <td>${i + 1}</td>
+                                    <td><img style="width: 250px; height: auto;" src="../../uploads/banners/${parsedResponse[i].banner_image}" alt=""></td>
+                                    <td>${parsedResponse[i].updated_at}</td>
+                                    <td><a href="edit-category.php?id=${parsedResponse[i].id}" class="text text-primary"><i class="fa-solid fa-pen-to-square"></i></a>&emsp;<a href="edit-category.php?id=${parsedResponse[i].id}" class="text text-danger"><i class="fa-solid fa-trash-can"></i></a></td>
+                                </tr>`;
+                        }
+                    }
+                });
+            }
+        </script>
 
 </body>
 

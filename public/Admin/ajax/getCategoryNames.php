@@ -2,7 +2,7 @@
 
 include '../config/conn.php';
 
-$getCategories = "SELECT id, category_name FROM tbl_category";
+$getCategories = "SELECT id, category_name FROM `tbl_category`";
 
 $result = $pdo->query($getCategories);
 

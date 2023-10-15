@@ -2,7 +2,7 @@
 
 include '../config/conn.php';
 
-$getProducts = "SELECT * FROM tbl_products";
+$getProducts = "SELECT * FROM `tbl_products`";
 
 $result = $pdo->query($getProducts);
 
