@@ -38,7 +38,35 @@
                 <div class="right"></div>
             </div>
         </div>
-        <div class="content"></div>
+        <div class="content">
+            <div class="container">
+                <div class="horizontal_cards">
+                    <div class="card_heading">
+                        <h2>Featured Products</h2>
+                    </div>
+                    <div class="card_body">
+                        <div class="card">
+                            <div class="overlay"></div>
+                        </div>
+                        <div class="card">
+                            <div class="overlay"></div>
+                        </div>
+                        <div class="card">
+                            <div class="overlay"></div>
+                        </div>
+                        <div class="card">
+                            <div class="overlay"></div>
+                        </div>
+                        <div class="card">
+                            <div class="overlay"></div>
+                        </div>
+                        <div class="card">
+                            <div class="overlay"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="footer"></div>
     </div>
 
