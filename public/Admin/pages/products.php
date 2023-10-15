@@ -151,7 +151,7 @@ if (isset($_POST['submit'])) {
                                 </tr>`;
                         }
                     }
-                })
+                });
             }
 
             function categoryNames() {

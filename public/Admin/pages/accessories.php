@@ -42,14 +42,17 @@
                             <div class="card-body">
                                 <form action="" class="row" method="POST">
                                     <div class="col-md-6 form-group">
-                                        <label class="form-label" for="">Select Category</label>
-                                        <select class="form-control" name="category_id" required>
+                                        <label class="form-label" for="">Select Product</label>
+                                        <select class="form-control" name="product_id" id="getProductData" required>
                                             <option value="">Select Product</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label class="form-label" for="">Accessories</label>
-                                        <input class="form-control" type="text" placeholder="Enter Sub Category Name" name="sub_category_name" id="" required>
+                                        <input class="form-control" type="text" placeholder="Enter Accessories Name" name="accessories_name" id="" required>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button class="btn btn-primary" type="submit" name="submit">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -80,6 +83,33 @@
         <!-- /.content-wrapper -->
 
         <?php include '../include/footer.php'; ?>
+
+        <script>
+            const getProductDataTag = document.getElementById('getProductData');
+
+            window.addEventListener('load', () => {
+                fetchProducts();
+                fetchAccessories();
+            });
+
+            function fetchProducts() {
+                $.ajax({
+                    url: '../ajax/getProducts.php',
+                    type: 'POST',
+                    success: function(response) {
+                        const parsedResponse = JSON.parse(response);
+                        for (let i = 0; i < parsedResponse.length; i++) {
+                            getProductDataTag.innerHTML += `
+                                <option value="${parsedResponse[i].id}">${parsedResponse[i].product_name}</option>`;
+                        }
+                    }
+                })
+            }
+
+            function fetchAccessories() {
+
+            }
+        </script>
 
 </body>
 

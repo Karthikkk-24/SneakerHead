@@ -7,7 +7,7 @@ $getProducts = "SELECT * FROM tbl_products";
 $result = $pdo->query($getProducts);
 
 
-$subCategoryData = [];
+$ProductsData = [];
 $counter = 1;
 
 if ($result->rowCount() > 0) {
@@ -23,7 +23,7 @@ if ($result->rowCount() > 0) {
         $stmt = $pdo->query($getSubCategoryName);
         $subCategoryName = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $subCategoryData[] = [
+        $ProductsData[] = [
             'count' => $counter,
             'id' => $row['id'],
             'category_name' => $categoryName['category_name'],
@@ -34,7 +34,7 @@ if ($result->rowCount() > 0) {
         $counter++;
     }
 
-    echo json_encode($subCategoryData);
+    echo json_encode($ProductsData);
 }
 
 ?>
