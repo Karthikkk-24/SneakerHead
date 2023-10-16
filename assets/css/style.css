@@ -209,13 +209,14 @@ a {
 .content .container .horizontal_cards .card_body .card:hover .overlay {
     height: 40%;
     opacity: 1;
+    border-radius: 15px 15px 0 0;
 }
 
 .content .container .top_deals_section {
     width: 100%;
     height: 60vh;
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 50% 50%;
     grid-template-rows: 1fr;
     padding: 1vh 2vw;
 }
@@ -242,7 +243,7 @@ a {
 
 .content .container .top_deals_section .top_deals .top_deals_content {
     display: grid;
-    grid-template-columns: 48% 48%;
+    grid-template-columns: repeat(3, 31%);
     gap: 2%;
     padding: 1%;
     height: 90%;
@@ -264,4 +265,6 @@ a {
     justify-content: center;
     width: 100%;
     height: 100%;
+    border: 2px solid var(--text);
+    border-radius: 12px;
 }

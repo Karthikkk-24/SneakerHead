@@ -148,6 +148,8 @@
                             <div class="card"></div>
                             <div class="card"></div>
                             <div class="card"></div>
+                            <div class="card"></div>
+                            <div class="card"></div>
                         </div>
                     </div>
                     <div class="top_deals_banner">
