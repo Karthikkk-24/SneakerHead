@@ -169,7 +169,7 @@ a {
 .content .container .horizontal_cards .card_heading {
     display: flex;
     width: 100%;
-    padding: 1vh 2vw;
+    padding: 2vw;
     height: 30%;
 }
 
@@ -211,4 +211,57 @@ a {
     opacity: 1;
 }
 
+.content .container .top_deals_section {
+    width: 100%;
+    height: 60vh;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 1fr;
+    padding: 1vh 2vw;
+}
 
+.content .container .top_deals_section .top_deals {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.content .container .top_deals_section .top_deals .top_deals_heading {
+    text-align: center;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    font-size: 2.4vh;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.content .container .top_deals_section .top_deals .top_deals_content {
+    display: grid;
+    grid-template-columns: 48% 48%;
+    gap: 2%;
+    padding: 1%;
+    height: 90%;
+    width: 100%;
+}
+
+.content .container .top_deals_section .top_deals .top_deals_content .card {
+    border: 2px solid var(--text);
+    background: var(--pink);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.5s;
+    position: relative;
+}
+
+.content .container .top_deals_section .top_deals_banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
