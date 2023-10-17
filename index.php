@@ -67,7 +67,7 @@
                 </div>
                 <div class="horizontal_cards">
                     <div class="card_heading">
-                        <h2>Featured Products</h2>
+                        <h2>Specials</h2>
                     </div>
                     <div class="card_body">
                         <div class="card">
@@ -92,7 +92,7 @@
                 </div>
                 <div class="horizontal_cards">
                     <div class="card_heading">
-                        <h2>Featured Products</h2>
+                        <h2>Popular Products</h2>
                     </div>
                     <div class="card_body">
                         <div class="card">
@@ -117,7 +117,7 @@
                 </div>
                 <div class="horizontal_cards">
                     <div class="card_heading">
-                        <h2>Featured Products</h2>
+                        <h2>Latest Products</h2>
                     </div>
                     <div class="card_body">
                         <div class="card">
@@ -142,7 +142,9 @@
                 </div>
                 <div class="top_deals_section">
                     <div class="top_deals">
-                        <div class="top_deals_heading">Top Deals</div>
+                        <div class="top_deals_heading">
+                            <h2>Top Deals</h2>
+                        </div>
                         <div class="top_deals_content">
                             <div class="card"></div>
                             <div class="card"></div>
