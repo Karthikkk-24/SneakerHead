@@ -29,6 +29,8 @@ if ($result->rowCount() > 0) {
             'category_name' => $categoryName['category_name'],
             'subcategory_name' => $subCategoryName['subcategory_name'],  
             'product_name' => $row['product_name'],
+            'product_image' => $row['product_image'],
+            'product_location' => $row['product_location'],
             'updated_at' => $row['updated_at']    
         ];
         $counter++;

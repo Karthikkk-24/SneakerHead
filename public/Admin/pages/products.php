@@ -4,19 +4,30 @@
 <?php
 
 if (isset($_POST['submit'])) {
+
+    $filename = $_FILES['product_image']['name'];
+    $tempname = $_FILES['product_image']['tmp_name'];
+    $product_location = 'uploads/products/' . $filename;
+    $file_location = '../../uploads/products/' . $filename;
+
+    move_uploaded_file($tempname, $file_location);
+
+
     $currentDateTime = date('Y-m-d H:i:s');
 
     $category_id = $_POST['category_id'];
     $subcategory_id = $_POST['subcategory_id'];
     $product_name = $_POST['product_name'];
 
-    $addProduct = "INSERT INTO tbl_products (category_id, subcategory_id, product_name, updated_at) VALUES (:category_id, :subcategory_id, :product_name, :updated_at)";
+    $addProduct = "INSERT INTO tbl_products (category_id, subcategory_id, product_name, product_image, product_location, updated_at) VALUES (:category_id, :subcategory_id, :product_name, :file_name, :product_location, :updated_at)";
 
     $stmt = $pdo->prepare($addProduct);
 
     $stmt->bindParam(':category_id', $category_id); 
     $stmt->bindParam(':subcategory_id', $subcategory_id);
     $stmt->bindParam(':product_name', $product_name);
+    $stmt->bindParam(':file_name', $filename);
+    $stmt->bindParam(':product_location', $product_location);
     $stmt->bindParam(':updated_at', $currentDateTime);
 
     $stmt->execute();
@@ -67,7 +78,7 @@ if (isset($_POST['submit'])) {
                                 <h3 class="card-title">Create Product</h3>
                             </div>
                             <div class="card-body">
-                                <form action="" class="row" method="POST">
+                                <form action="" class="row" method="POST" enctype="multipart/form-data">
                                     <div class="col-md-6 form-group">
                                         <label class="form-label" for="">Select Category</label>
                                         <select class="form-control" id="categoryNames" name="category_id" required>
@@ -81,8 +92,12 @@ if (isset($_POST['submit'])) {
                                         </select>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <label class="form-label" for="">Product Name</label>
-                                        <input class="form-control" type="text" placeholder="Enter Product Name" name="product_name" id="" required>
+                                        <label class="form-label" for="productName">Product Name</label>
+                                        <input class="form-control" type="text" placeholder="Enter Product Name" name="product_name" id="productName" required>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label for="productImage" class="form-label">Product Image</label>
+                                        <input type="file" name="product_image" id="productImage" class="form-control" required>
                                     </div>
                                     <div class="col-md-12">
                                         <button class="btn btn-primary" type="submit" name="submit">Submit</button>
@@ -102,6 +117,7 @@ if (isset($_POST['submit'])) {
                                             <th>Category Name</th>
                                             <th>Sub Category Name</th>
                                             <th>Product Name</th>
+                                            <th>Product Image</th>
                                             <th>Action</th>
                                         </thead>
                                         <tbody id="getProductData"></tbody>
@@ -147,11 +163,33 @@ if (isset($_POST['submit'])) {
                                     <td>${parsedResponse[i].category_name}</td>
                                     <td>${parsedResponse[i].subcategory_name}</td>
                                     <td>${parsedResponse[i].product_name}</td>
-                                    <td><a href="edit-category.php?id=${parsedResponse[i].id}" class="text text-primary"><i class="fa-solid fa-pen-to-square"></i></a>&emsp;<a href="edit-category.php?id=${parsedResponse[i].id}" class="text text-danger"><i class="fa-solid fa-trash-can"></i></a></td>
+                                    <td><img style="width: 200px; height: 200px;" src="../../${parsedResponse[i].product_location}" /></td>
+                                    <td><a href="edit-category.php?id=${parsedResponse[i].id}" class="text text-primary"><i class="fa-solid fa-pen-to-square"></i></a>&emsp;<a onclick="deleteProduct('${parsedResponse[i].id}')" class="text text-danger"><i class="fa-solid fa-trash-can"></i></a></td>
                                 </tr>`;
                         }
                     }
                 });
+            }
+
+            function deleteProduct(id) {
+                if (confirm('Do you wish to delete this product?')) {
+                    $.ajax({
+                        url: '../ajax/deleteProduct.php',
+                        type: 'POST',
+                        data: {
+                            id: id
+                        },
+                        success: function(response) {
+                            if (response === 'Success') {
+                                window.location.reload();
+                            } else {
+                                return false;
+                            }
+                        }
+                    })
+                } else {
+                    return false;
+                }
             }
 
             function categoryNames() {
