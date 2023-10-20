@@ -18,13 +18,15 @@ if (isset($_POST['submit'])) {
     $category_id = $_POST['category_id'];
     $subcategory_id = $_POST['subcategory_id'];
     $product_name = $_POST['product_name'];
+    $product_price = $_POST['product_price'];
 
-    $addProduct = "INSERT INTO tbl_products (category_id, subcategory_id, product_name, product_image, product_location, updated_at) VALUES (:category_id, :subcategory_id, :product_name, :file_name, :product_location, :updated_at)";
+    $addProduct = "INSERT INTO tbl_products (category_id, subcategory_id, product_name, product_price, product_image, product_location, updated_at) VALUES (:category_id, :subcategory_id, :product_name, :product_price, :file_name, :product_location, :updated_at)";
 
     $stmt = $pdo->prepare($addProduct);
 
     $stmt->bindParam(':category_id', $category_id); 
     $stmt->bindParam(':subcategory_id', $subcategory_id);
+    $stmt->bindParam(':product_price', $product_price);
     $stmt->bindParam(':product_name', $product_name);
     $stmt->bindParam(':file_name', $filename);
     $stmt->bindParam(':product_location', $product_location);
@@ -98,6 +100,10 @@ if (isset($_POST['submit'])) {
                                     <div class="col-md-6 form-group">
                                         <label for="productImage" class="form-label">Product Image</label>
                                         <input type="file" name="product_image" id="productImage" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label class="form-label" for="productPrice">Product Price</label>
+                                        <input class="form-control" type="number" placeholder="Enter Product Price" name="product_price" id="productPrice" required>
                                     </div>
                                     <div class="col-md-12">
                                         <button class="btn btn-primary" type="submit" name="submit">Submit</button>
