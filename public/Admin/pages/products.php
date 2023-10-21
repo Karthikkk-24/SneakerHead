@@ -124,6 +124,7 @@ if (isset($_POST['submit'])) {
                                             <th>Sub Category Name</th>
                                             <th>Product Name</th>
                                             <th>Product Image</th>
+                                            <th>Price</th>
                                             <th>Action</th>
                                         </thead>
                                         <tbody id="getProductData"></tbody>
@@ -135,6 +136,10 @@ if (isset($_POST['submit'])) {
                 </div><!--/. container-fluid -->
             </section>
             <!-- /.content -->
+            <br>
+            <br>
+            <br>
+            <br>
         </div>
         <!-- /.content-wrapper -->
 
@@ -170,6 +175,7 @@ if (isset($_POST['submit'])) {
                                     <td>${parsedResponse[i].subcategory_name}</td>
                                     <td>${parsedResponse[i].product_name}</td>
                                     <td><img style="width: 200px; height: 200px;" src="../../${parsedResponse[i].product_location}" /></td>
+                                    <td>₹ ${parsedResponse[i].product_price}</td>
                                     <td><a href="edit-category.php?id=${parsedResponse[i].id}" class="text text-primary"><i class="fa-solid fa-pen-to-square"></i></a>&emsp;<a onclick="deleteProduct('${parsedResponse[i].id}')" class="text text-danger"><i class="fa-solid fa-trash-can"></i></a></td>
                                 </tr>`;
                         }

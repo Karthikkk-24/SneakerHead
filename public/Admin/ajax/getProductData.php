@@ -31,6 +31,7 @@ if ($result->rowCount() > 0) {
             'product_name' => $row['product_name'],
             'product_image' => $row['product_image'],
             'product_location' => $row['product_location'],
+            'product_price' => $row['product_price'],
             'updated_at' => $row['updated_at']    
         ];
         $counter++;
