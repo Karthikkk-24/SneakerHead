@@ -7,13 +7,15 @@ if (isset($_POST['submit'])) {
     $currentDateTime = date('Y-m-d H:i:s');
     $product_id = $_POST['product_id'];
     $accessories_name = $_POST['accessories_name'];
+    $accessories_price = $_POST['accessories_price'];
 
-    $insertAccessories = "INSERT INTO tbl_accessories (product_id, accessories_name, created_at) VALUES (:product_id, :accessories_name, :updated_at)";
+    $insertAccessories = "INSERT INTO tbl_accessories (product_id, accessories_name, accessories_price, created_at) VALUES (:product_id, :accessories_name, :accessories_price, :updated_at)";
     
     $stmt = $pdo->prepare($insertAccessories);
 
     $stmt->bindParam(':product_id', $product_id);
     $stmt->bindParam(':accessories_name', $accessories_name);
+    $stmt->bindParam(':accessories_price', $accessories_price);
     $stmt->bindParam(':updated_at', $currentDateTime);
 
     $stmt->execute();
@@ -74,6 +76,10 @@ if (isset($_POST['submit'])) {
                                         <label class="form-label" for="">Accessories</label>
                                         <input class="form-control" type="text" placeholder="Enter Accessories Name" name="accessories_name" id="" required>
                                     </div>
+                                    <div class="col-md-6 form-group">
+                                        <label class="form-label" for="">Price</label>
+                                        <input class="form-control" type="number" placeholder="Enter Price" name="accessories_price" id="" required>
+                                    </div>
                                     <div class="col-md-12">
                                         <button class="btn btn-primary" type="submit" name="submit">Submit</button>
                                     </div>
@@ -91,6 +97,7 @@ if (isset($_POST['submit'])) {
                                             <th>Sr. No</th>
                                             <th>Product Name</th>
                                             <th>Accessories</th>
+                                            <th>Price</th>
                                             <th>Action</th>
                                         </thead>
                                         <tbody id="accessories_list"></tbody>
@@ -142,6 +149,7 @@ if (isset($_POST['submit'])) {
                                     <td>${parsedResponse[i].count}</td>
                                     <td>${parsedResponse[i].product_name}</td>
                                     <td>${parsedResponse[i].accessories_name}</td>
+                                    <td>${parsedResponse[i].accessories_price}</td>
                                     <td><a href="edit-category.php?id=${parsedResponse[i].id}" class="text text-primary"><i class="fa-solid fa-pen-to-square"></i></a>&emsp;<a href="edit-category.php?id=${parsedResponse[i].id}" class="text text-danger"><i class="fa-solid fa-trash-can"></i></a></td>
                                 </tr>`;
                         }

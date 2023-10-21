@@ -15,6 +15,7 @@ if ($result->rowCount() > 0) {
         $accessories_id = $row['id'];
         $product_id = $row['product_id'];
         $accessories_name = $row['accessories_name'];
+        $accessories_price = $row['accessories_price'];
 
         $getProductName = "SELECT * FROM tbl_products WHERE id = '$product_id'";
         $productNameResult = $pdo->query($getProductName);
@@ -28,7 +29,8 @@ if ($result->rowCount() > 0) {
             'count' => $counter,
             'id' => $accessories_id,
             'accessories_name' => $accessories_name,
-            'product_name' => $product_name
+            'product_name' => $product_name,
+            'accessories_price' => $accessories_price
         ];
 
         $counter++;
