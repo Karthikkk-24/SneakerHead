@@ -1,39 +1,6 @@
 import "../assets/css/index.css";
 
-import React, { useEffect, useState } from "react";
-
-
-export default function Index() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/fetch-banner-data")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        console.log(data[0]);
-        console.log(data[0]['banner_image']);
-        setData(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
-
-  useEffect(() => {
-    if (!loading && data.length > 0) {
-      const bannerContainer = document.getElementById("bannerContainer");
-      bannerContainer.style.backgroundImage = `url(${data[0]["banner_image"]})`;
-    }
-  }, [data, loading]);
-
+export default function index() {
   return (
     <>
       <div className="main_container">
