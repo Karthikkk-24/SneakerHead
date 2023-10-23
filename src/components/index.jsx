@@ -30,7 +30,7 @@ export default function Index() {
   useEffect(() => {
     if (!loading && data.length > 0) {
       const bannerContainer = document.getElementById("bannerContainer");
-      bannerContainer.style.backgroundImage = `url(${data[0]["banner_image"]})`;
+      bannerContainer.style.backgroundImage = `url(${data[0]["banner_location"]})`;
     }
   }, [data, loading]);
 
