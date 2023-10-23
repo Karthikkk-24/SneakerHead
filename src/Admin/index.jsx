@@ -10,7 +10,7 @@ export default function index() {
         <div className="wrapper">
           <Header />
           <Navbar />
-          {/* <Sidebar /> */}
+          <Sidebar />
           <div className="content-wrapper">
             
             <div className="content-header">

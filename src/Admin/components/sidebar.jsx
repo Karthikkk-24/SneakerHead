@@ -9,7 +9,6 @@ export default function sidebar() {
             src="../dist/img/AdminLTELogo.png"
             alt="AdminLTE Logo"
             className="brand-image img-circle elevation-3"
-            style="opacity: .8"
           />
           <span className="brand-text font-weight-light">Sneaker Head</span>
         </a>
