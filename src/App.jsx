@@ -1,18 +1,15 @@
-import Admin from "./Admin/index";
 import "./App.css";
 import Index from "./components/index";
 
-const checkValid = 'admin';
+const checkValid = "user";
 
 function App() {
-  if (checkValid === 'user') {
-    return <>
+  if (checkValid === "user") {
+    return (
+      <>
         <Index />
-    </>;
-  } else if (checkValid === 'admin') {
-    return <>
-        <Admin />
-    </>;
+      </>
+    );
   } else {
     return <></>;
   }
