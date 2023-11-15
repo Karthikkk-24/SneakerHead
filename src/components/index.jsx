@@ -186,7 +186,7 @@ export default function Index() {
             <div className="three_grid_Section">
               <div className="grid grid1">
                 <div className="grid_header">
-                  <h2 className="heading">Header</h2>
+                  <h2 className="heading">Suggested for YOU</h2>
                 </div>
                 <div className="grid_body">
                   <div className="item item1"></div>
@@ -201,7 +201,7 @@ export default function Index() {
               </div>
               <div className="grid grid1">
                 <div className="grid_header">
-                  <h2 className="heading">Header</h2>
+                  <h2 className="heading">Recommended Items</h2>
                 </div>
                 <div className="grid_body">
                   <div className="item item1"></div>
@@ -216,7 +216,7 @@ export default function Index() {
               </div>
               <div className="grid grid2">
                 <div className="grid_header">
-                  <h2 className="heading">Header</h2>
+                  <h2 className="heading">Top Selection</h2>
                   <span className="more">
                     <i className="fa-solid fa-angle-right"></i>
                   </span>
