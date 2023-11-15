@@ -2,7 +2,6 @@ import "../assets/css/index.css";
 
 import React, { useEffect, useState } from "react";
 
-
 export default function Index() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -18,7 +17,7 @@ export default function Index() {
       .then((data) => {
         console.log(data);
         console.log(data[0]);
-        console.log(data[0]['banner_image']);
+        console.log(data[0]["banner_image"]);
         setData(data);
         setLoading(false);
       })
@@ -183,6 +182,52 @@ export default function Index() {
                 </div>
               </div>
               <div className="top_deals_banner"></div>
+            </div>
+            <div className="three_grid_Section">
+              <div className="grid grid1">
+                <div className="grid_header">
+                  <h2 className="heading">Header</h2>
+                </div>
+                <div className="grid_body">
+                  <div className="item item1"></div>
+                  <div className="item item2"></div>
+                  <div className="item item3"></div>
+                </div>
+                <div className="grid_footer">
+                    <span className="view_more">
+                        View More
+                    </span>
+                </div>
+              </div>
+              <div className="grid grid1">
+                <div className="grid_header">
+                  <h2 className="heading">Header</h2>
+                </div>
+                <div className="grid_body">
+                  <div className="item item1"></div>
+                  <div className="item item2"></div>
+                  <div className="item item3"></div>
+                </div>
+                <div className="grid_footer">
+                    <span className="view_more">
+                        View More
+                    </span>
+                </div>
+              </div>
+              <div className="grid grid2">
+                <div className="grid_header">
+                  <h2 className="heading">Header</h2>
+                  <span className="more">
+                    <i className="fa-solid fa-angle-right"></i>
+                  </span>
+                </div>
+                <div className="grid_body">
+                  <div className="item item1"></div>
+                  <div className="item item2"></div>
+                  <div className="item item4"></div>
+                  <div className="item item3"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
