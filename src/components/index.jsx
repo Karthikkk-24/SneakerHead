@@ -194,9 +194,7 @@ export default function Index() {
                   <div className="item item3"></div>
                 </div>
                 <div className="grid_footer">
-                    <span className="view_more">
-                        View More
-                    </span>
+                  <span className="view_more">View More</span>
                 </div>
               </div>
               <div className="grid grid1">
@@ -209,9 +207,7 @@ export default function Index() {
                   <div className="item item3"></div>
                 </div>
                 <div className="grid_footer">
-                    <span className="view_more">
-                        View More
-                    </span>
+                  <span className="view_more">View More</span>
                 </div>
               </div>
               <div className="grid grid2">
@@ -231,7 +227,49 @@ export default function Index() {
             </div>
           </div>
         </div>
-        <div className="footer"></div>
+        <div className="footer_container">
+          <div className="footer_section">
+            <div className="grid grid1">
+              <div className="footer_heading">Heading 1</div>
+              <div className="footer_body">
+                <span>Content 1</span>
+                <span>Content 2</span>
+                <span>Content 3</span>
+                <span>Content 4</span>
+              </div>
+            </div>
+            <div className="grid grid2">
+              <div className="footer_heading">Heading 2</div>
+              <div className="footer_body">
+                <span>Content 1</span>
+                <span>Content 2</span>
+                <span>Content 3</span>
+                <span>Content 4</span>
+              </div>
+            </div>
+            <div className="grid grid3">
+              <div className="footer_heading">Heading 3</div>
+              <div className="footer_body">
+                <span>Content 1</span>
+                <span>Content 2</span>
+                <span>Content 3</span>
+                <span>Content 4</span>
+              </div>
+            </div>
+            <div className="grid grid4">
+              <div className="footer_heading">Heading 4</div>
+              <div className="footer_body">
+                <span>Content 1</span>
+                <span>Content 2</span>
+                <span>Content 3</span>
+                <span>Content 4</span>
+              </div>
+            </div>
+          </div>
+          <div className="footer">
+            <span>&copy; 2023-2024 Karthik Shettigar (The Coding Hacker)</span>
+          </div>
+        </div>
       </div>
     </>
   );
