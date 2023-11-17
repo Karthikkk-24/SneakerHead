@@ -1,6 +1,7 @@
 import "../assets/css/index.css";
 
 import React, { useEffect, useState } from "react";
+import Card from "./Card";
 
 export default function Index() {
   const [data, setData] = useState([]);
@@ -52,7 +53,7 @@ export default function Index() {
               <div className="right">
                 <div className="profile">
                   <span>
-                    <a href="pages/login.php">Login</a>
+                    <a href="">Login</a>
                   </span>
                   <div className="icon">
                     <i className="fa-solid fa-user"></i>
@@ -72,24 +73,12 @@ export default function Index() {
                 <h2>Featured Products</h2>
               </div>
               <div className="card_body">
-                <div className="card">
-                  <div className="overlay"></div>
-                </div>
-                <div className="card">
-                  <div className="overlay"></div>
-                </div>
-                <div className="card">
-                  <div className="overlay"></div>
-                </div>
-                <div className="card">
-                  <div className="overlay"></div>
-                </div>
-                <div className="card">
-                  <div className="overlay"></div>
-                </div>
-                <div className="card">
-                  <div className="overlay"></div>
-                </div>
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
               </div>
             </div>
             <div className="horizontal_cards">
@@ -97,24 +86,12 @@ export default function Index() {
                 <h2>Specials</h2>
               </div>
               <div className="card_body">
-                <div className="card">
-                  <div className="overlay"></div>
-                </div>
-                <div className="card">
-                  <div className="overlay"></div>
-                </div>
-                <div className="card">
-                  <div className="overlay"></div>
-                </div>
-                <div className="card">
-                  <div className="overlay"></div>
-                </div>
-                <div className="card">
-                  <div className="overlay"></div>
-                </div>
-                <div className="card">
-                  <div className="overlay"></div>
-                </div>
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
               </div>
             </div>
             <div className="horizontal_cards">
@@ -122,24 +99,12 @@ export default function Index() {
                 <h2>Popular Products</h2>
               </div>
               <div className="card_body">
-                <div className="card">
-                  <div className="overlay"></div>
-                </div>
-                <div className="card">
-                  <div className="overlay"></div>
-                </div>
-                <div className="card">
-                  <div className="overlay"></div>
-                </div>
-                <div className="card">
-                  <div className="overlay"></div>
-                </div>
-                <div className="card">
-                  <div className="overlay"></div>
-                </div>
-                <div className="card">
-                  <div className="overlay"></div>
-                </div>
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
               </div>
             </div>
             <div className="horizontal_cards">
@@ -147,24 +112,12 @@ export default function Index() {
                 <h2>Latest Products</h2>
               </div>
               <div className="card_body">
-                <div className="card">
-                  <div className="overlay"></div>
-                </div>
-                <div className="card">
-                  <div className="overlay"></div>
-                </div>
-                <div className="card">
-                  <div className="overlay"></div>
-                </div>
-                <div className="card">
-                  <div className="overlay"></div>
-                </div>
-                <div className="card">
-                  <div className="overlay"></div>
-                </div>
-                <div className="card">
-                  <div className="overlay"></div>
-                </div>
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
               </div>
             </div>
             <div className="top_deals_section">
