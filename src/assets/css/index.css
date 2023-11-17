@@ -209,7 +209,7 @@ a {
   display: flex;
   width: 100%;
   padding: 1vh 2vw;
-  height: 30%;
+  height: 100%;
 }
 
 .content .container .horizontal_cards .card_body {
@@ -222,7 +222,7 @@ a {
 }
 
 .content .container .horizontal_cards .card_body .card {
-  height: 100%;
+  height: 18vh;
   width: 15vw;
   border: 2px solid var(--text);
   background: var(--pink);
@@ -236,6 +236,7 @@ a {
   height: 0;
   width: 100%;
   align-items: center;
+  display: flex;
   justify-content: center;
   background: rgba(0, 0, 0, 0.5);
   position: absolute;
@@ -243,6 +244,14 @@ a {
   left: 0;
   opacity: 0;
   transition: height 0.3s ease-in, opacity 0.3s ease-in;
+}
+
+.content .container .horizontal_cards .card_body .card .overlay .heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray);
+    font-weight: 500;
 }
 
 .content .container .horizontal_cards .card_body .card:hover .overlay {

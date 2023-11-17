@@ -3,6 +3,8 @@ import "../assets/css/index.css";
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
 
+import { Link, BrowserRouter as Router } from "react-router-dom";
+
 export default function Index() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -53,7 +55,9 @@ export default function Index() {
               <div className="right">
                 <div className="profile">
                   <span>
-                    <a href="">Login</a>
+                    <Router>
+                      <Link to="/login">Login</Link>
+                    </Router>
                   </span>
                   <div className="icon">
                     <i className="fa-solid fa-user"></i>
@@ -73,12 +77,12 @@ export default function Index() {
                 <h2>Featured Products</h2>
               </div>
               <div className="card_body">
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
+                <Card title="" />
+                <Card title="" />
+                <Card title="" />
+                <Card title="" />
+                <Card title="" />
+                <Card title="" />
               </div>
             </div>
             <div className="horizontal_cards">
@@ -86,12 +90,12 @@ export default function Index() {
                 <h2>Specials</h2>
               </div>
               <div className="card_body">
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
+                <Card title="" />
+                <Card title="" />
+                <Card title="" />
+                <Card title="" />
+                <Card title="" />
+                <Card title="" />
               </div>
             </div>
             <div className="horizontal_cards">
@@ -99,12 +103,12 @@ export default function Index() {
                 <h2>Popular Products</h2>
               </div>
               <div className="card_body">
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
+                <Card title="" />
+                <Card title="" />
+                <Card title="" />
+                <Card title="" />
+                <Card title="" />
+                <Card title="" />
               </div>
             </div>
             <div className="horizontal_cards">
@@ -112,12 +116,12 @@ export default function Index() {
                 <h2>Latest Products</h2>
               </div>
               <div className="card_body">
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
+                <Card title="" />
+                <Card title="" />
+                <Card title="" />
+                <Card title="" />
+                <Card title="" />
+                <Card title="" />
               </div>
             </div>
             <div className="top_deals_section">
