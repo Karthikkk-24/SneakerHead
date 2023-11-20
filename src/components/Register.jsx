@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Login() {
+export default function Register() {
   const pinkColor = "#f9b4ed";
   const whiteColor = "#f6fff8";
   const mainColor = "#d90368";
@@ -138,8 +138,8 @@ export default function Login() {
         </div>
         <div style={styles.loginBox}>
           <div style={styles.loginBoxContainer}>
-          <div style={styles.mainHeading}>Log In</div>
-          <div style={styles.subHeading}>To your account</div>
+          <div style={styles.mainHeading}>Register</div>
+          <div style={styles.subHeading}>Create a new account</div>
           <br />
           <br />
           <div style={styles.formGroup}>

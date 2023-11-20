@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 export default function Login() {
   const pinkColor = "#f9b4ed";
@@ -130,9 +131,13 @@ export default function Login() {
             </div>
             <br />
             {/* <button style={styles.customBtn} id="btn_register"> */}
-            <a style={styles.customBtn} id="btn_register" href="">
-              Sign Up
-            </a>
+            <Router>
+              <Link to="/register">
+                <button style={styles.customBtn} id="btn_register">
+                  Sign Up
+                </button>
+              </Link>
+            </Router>
             {/* </button> */}
           </div>
         </div>

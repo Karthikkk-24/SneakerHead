@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 
 import { Link, BrowserRouter as Router } from "react-router-dom";
+import { Switch } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Index() {
   const [data, setData] = useState([]);
@@ -56,7 +57,9 @@ export default function Index() {
                 <div className="profile">
                   <span>
                     <Router>
-                      <Link to="/login">Login</Link>
+                      <Switch>
+                        <Link to="/login">Login</Link>
+                      </Switch>
                     </Router>
                   </span>
                   <div className="icon">
