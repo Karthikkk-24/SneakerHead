@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 export default function Register() {
   const pinkColor = "#f9b4ed";
@@ -159,13 +160,13 @@ export default function Register() {
           <br />
           <br />
           <button style={styles.customBtn} id="btn_login">
-            Log In
+            Sign Up
           </button>
           <br />
           <span>
-            <a href="" style={styles.customText}>
-              Forget Password?
-            </a>
+            <Link to="/login" style={styles.customText}>
+              Already a member?
+            </Link>
           </span>
           </div>
         </div>

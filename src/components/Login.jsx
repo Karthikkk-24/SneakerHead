@@ -131,13 +131,11 @@ export default function Login() {
             </div>
             <br />
             {/* <button style={styles.customBtn} id="btn_register"> */}
-            <Router>
               <Link to="/register">
                 <button style={styles.customBtn} id="btn_register">
                   Sign Up
                 </button>
               </Link>
-            </Router>
             {/* </button> */}
           </div>
         </div>
