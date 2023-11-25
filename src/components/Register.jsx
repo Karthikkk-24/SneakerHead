@@ -124,16 +124,16 @@ export default function Register() {
       <div style={styles.loginContainer}>
         <div style={styles.loginImage}>
           <div style={styles.overlay}>
-            <div style={styles.heading}>Don't Have an Account?</div>
+            <div style={styles.heading}>Already have an account?</div>
             <div style={styles.para}>
-              If you don't have an account, you can click the button below for
+              If you already have an account, you can click the button below for
               quick registration.
             </div>
             <br />
             {/* <button style={styles.customBtn} id="btn_register"> */}
-            <a style={styles.customBtn} id="btn_register" href="">
-              Sign Up
-            </a>
+            <Link style={styles.customBtn} id="btn_register" to="/login">
+              Log In 
+            </Link>
             {/* </button> */}
           </div>
         </div>
@@ -148,16 +148,13 @@ export default function Register() {
             <input style={styles.inputStyle} type="text" />
           </div>
           <div style={styles.formGroup}>
+            <label style={styles.labelStyle} htmlFor="">Phone Number</label>
+            <input type="number" style={styles.inputStyle} />
+          </div>
+          <div style={styles.formGroup}>
             <label style={styles.labelStyle} htmlFor="">Password</label>
             <input style={styles.inputStyle} type="text" />
           </div>
-          <div style={styles.formGroup}>
-            <label htmlFor="">
-              <input type="checkbox" name="" id="" />
-              Remember Me
-            </label>
-          </div>
-          <br />
           <br />
           <button style={styles.customBtn} id="btn_login">
             Sign Up

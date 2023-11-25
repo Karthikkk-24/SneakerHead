@@ -56,11 +56,7 @@ export default function Index() {
               <div className="right">
                 <div className="profile">
                   <span>
-                    <Router>
-                      <Switch>
-                        <Link to="/login">Login</Link>
-                      </Switch>
-                    </Router>
+                    <Link to="/login">Login</Link>
                   </span>
                   <div className="icon">
                     <i className="fa-solid fa-user"></i>
