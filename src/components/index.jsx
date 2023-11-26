@@ -3,12 +3,7 @@ import "../assets/css/index.css";
 import React, { useEffect, useState } from "react";
 import { Link, BrowserRouter as Router } from "react-router-dom";
 import { Switch } from "react-router-dom/cjs/react-router-dom.min";
-import about from "./About";
 import Card from "./Card";
-import category from "./Categories";
-import contact from "./Contact";
-import specials from "./Specials";
-import upcoming from "./Upcoming";
 
 export default function Index() {
   const [data, setData] = useState([]);
