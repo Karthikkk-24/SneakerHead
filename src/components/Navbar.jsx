@@ -60,6 +60,14 @@ export default function Navbar() {
         justifyContent: "center",
         fontSize: "1.1rem",
         color: `${whiteColor}`,
+    },
+    loginText: {
+        height: "100%",
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        
     }
   };
 
@@ -76,7 +84,7 @@ export default function Navbar() {
       </div>
       <div style={styles.login}>
       <div style={styles.profile}>
-            <span>
+            <span style={styles.loginText}>
                 <Link to="/login">Login</Link>
             </span>
             <div style={styles.icon}>
