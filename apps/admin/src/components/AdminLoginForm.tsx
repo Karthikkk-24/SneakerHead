@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { getSafeRedirectPath } from "@/lib/redirect";
 
 export function AdminLoginForm() {
   const [error, setError] = useState<string | null>(null);
@@ -27,9 +28,9 @@ export function AdminLoginForm() {
         throw new Error(data.message ?? "Login failed");
       }
 
-      const redirect =
-        new URLSearchParams(window.location.search).get("redirect") ??
-        "/dashboard";
+      const redirect = getSafeRedirectPath(
+        new URLSearchParams(window.location.search).get("redirect"),
+      );
       window.location.href = redirect;
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed");

@@ -10,7 +10,7 @@ import { getAdminProfile, refreshRequest } from "./api";
 
 export async function getAdminSession(): Promise<UserProfile | null> {
   let accessToken = await getAccessToken();
-  const refreshToken = await getRefreshToken();
+  let refreshToken = await getRefreshToken();
 
   if (!accessToken && refreshToken) {
     try {
@@ -20,6 +20,7 @@ export async function getAdminSession(): Promise<UserProfile | null> {
         refreshed.tokens.refreshToken,
       );
       accessToken = refreshed.tokens.accessToken;
+      refreshToken = refreshed.tokens.refreshToken;
     } catch {
       await clearAuthCookies();
       return null;
@@ -38,25 +39,26 @@ export async function getAdminSession(): Promise<UserProfile | null> {
     }
     return user;
   } catch {
-    if (refreshToken) {
-      try {
-        const refreshed = await refreshRequest(refreshToken);
-        await setAuthCookies(
-          refreshed.tokens.accessToken,
-          refreshed.tokens.refreshToken,
-        );
-        const user = await getAdminProfile(refreshed.tokens.accessToken);
-        if (!ADMIN_ROLES.includes(user.role)) {
-          await clearAuthCookies();
-          return null;
-        }
-        return user;
-      } catch {
+    if (!refreshToken) {
+      await clearAuthCookies();
+      return null;
+    }
+
+    try {
+      const refreshed = await refreshRequest(refreshToken);
+      await setAuthCookies(
+        refreshed.tokens.accessToken,
+        refreshed.tokens.refreshToken,
+      );
+      const user = await getAdminProfile(refreshed.tokens.accessToken);
+      if (!ADMIN_ROLES.includes(user.role)) {
         await clearAuthCookies();
         return null;
       }
+      return user;
+    } catch {
+      await clearAuthCookies();
+      return null;
     }
-    await clearAuthCookies();
-    return null;
   }
 }

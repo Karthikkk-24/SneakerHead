@@ -156,19 +156,25 @@ export class AuthService {
     const rawToken = generateSecureToken();
     const expiresAt = new Date(Date.now() + 60 * 60 * 1000);
 
-    await this.prisma.passwordResetToken.create({
-      data: {
-        userId: user.id,
-        tokenHash: hashToken(rawToken),
-        expiresAt,
-      },
-    });
-
-    this.logger.log(
-      `Password reset stub for ${user.email}. Token: ${rawToken}`,
-    );
+    await this.prisma.$transaction([
+      this.prisma.passwordResetToken.updateMany({
+        where: { userId: user.id, usedAt: null },
+        data: { usedAt: new Date() },
+      }),
+      this.prisma.passwordResetToken.create({
+        data: {
+          userId: user.id,
+          tokenHash: hashToken(rawToken),
+          expiresAt,
+        },
+      }),
+    ]);
 
     const isDev = this.configService.get<string>("NODE_ENV") !== "production";
+    if (isDev) {
+      this.logger.log(`Password reset stub sent for ${user.email}`);
+    }
+
     return isDev ? { message, resetToken: rawToken } : { message };
   }
 
@@ -271,6 +277,12 @@ export class AuthService {
       if (error instanceof UnauthorizedException) {
         throw error;
       }
+      this.logger.warn(
+        `Rate limit check failed for ${key}: ${error instanceof Error ? error.message : "unknown error"}`,
+      );
+      throw new UnauthorizedException(
+        "Authentication temporarily unavailable. Please try again later.",
+      );
     }
   }
 }

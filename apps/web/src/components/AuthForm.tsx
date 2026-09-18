@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { FormEvent, useState } from "react";
+import { getSafeRedirectPath } from "@/lib/redirect";
 
 interface AuthFormProps {
   mode: "login" | "register";
@@ -33,9 +34,9 @@ export function AuthForm({ mode }: AuthFormProps) {
         throw new Error(data.message ?? "Authentication failed");
       }
 
-      const redirect =
-        new URLSearchParams(window.location.search).get("redirect") ??
-        "/account";
+      const redirect = getSafeRedirectPath(
+        new URLSearchParams(window.location.search).get("redirect"),
+      );
       window.location.href = redirect;
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong");

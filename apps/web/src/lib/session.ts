@@ -9,7 +9,7 @@ import { getMe, refreshRequest } from "./api";
 
 export async function getSession(): Promise<UserProfile | null> {
   let accessToken = await getAccessToken();
-  const refreshToken = await getRefreshToken();
+  let refreshToken = await getRefreshToken();
 
   if (!accessToken && refreshToken) {
     try {
@@ -19,6 +19,7 @@ export async function getSession(): Promise<UserProfile | null> {
         refreshed.tokens.refreshToken,
       );
       accessToken = refreshed.tokens.accessToken;
+      refreshToken = refreshed.tokens.refreshToken;
     } catch {
       await clearAuthCookies();
       return null;
@@ -32,20 +33,21 @@ export async function getSession(): Promise<UserProfile | null> {
   try {
     return await getMe(accessToken);
   } catch {
-    if (refreshToken) {
-      try {
-        const refreshed = await refreshRequest(refreshToken);
-        await setAuthCookies(
-          refreshed.tokens.accessToken,
-          refreshed.tokens.refreshToken,
-        );
-        return await getMe(refreshed.tokens.accessToken);
-      } catch {
-        await clearAuthCookies();
-        return null;
-      }
+    if (!refreshToken) {
+      await clearAuthCookies();
+      return null;
     }
-    await clearAuthCookies();
-    return null;
+
+    try {
+      const refreshed = await refreshRequest(refreshToken);
+      await setAuthCookies(
+        refreshed.tokens.accessToken,
+        refreshed.tokens.refreshToken,
+      );
+      return await getMe(refreshed.tokens.accessToken);
+    } catch {
+      await clearAuthCookies();
+      return null;
+    }
   }
 }
