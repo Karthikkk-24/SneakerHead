@@ -1,0 +1,84 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: sneakerhead
+          POSTGRES_PASSWORD: sneakerhead
+          POSTGRES_DB: sneakerhead
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U sneakerhead -d sneakerhead"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_URL: postgresql://sneakerhead:sneakerhead@localhost:5432/sneakerhead
+      REDIS_URL: redis://localhost:6379
+      JWT_ACCESS_SECRET: ci-access-secret-minimum-32-characters-long
+      JWT_REFRESH_SECRET: ci-refresh-secret-minimum-32-characters-long
+      JWT_ACCESS_EXPIRES_IN: 15m
+      JWT_REFRESH_EXPIRES_IN: 7d
+      API_PORT: 3001
+      CORS_ORIGINS: http://localhost:3000,http://localhost:3002
+      NODE_ENV: test
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build shared types
+        run: pnpm --filter @sneakerhead/types build
+
+      - name: Generate Prisma client
+        run: pnpm --filter @sneakerhead/api db:generate
+
+      - name: Run migrations
+        run: pnpm --filter @sneakerhead/api exec prisma migrate deploy
+
+      - name: Build API
+        run: pnpm --filter @sneakerhead/api build
+
+      - name: Build web app
+        run: pnpm --filter @sneakerhead/web build
+        env:
+          API_URL: http://localhost:3001
+
+      - name: Build admin app
+        run: pnpm --filter @sneakerhead/admin build
+        env:
+          API_URL: http://localhost:3001
