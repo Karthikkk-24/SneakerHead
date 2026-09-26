@@ -9,5 +9,7 @@ dist
 .DS_Store
 coverage
 *.tsbuildinfo
+uploads
+apps/api/uploads
 apps/api/prisma/*.db
 apps/api/prisma/*.db-journal

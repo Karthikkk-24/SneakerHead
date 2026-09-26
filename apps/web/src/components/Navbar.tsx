@@ -14,6 +14,9 @@ export async function Navbar() {
           <Link href="/" className="text-slate-600 hover:text-slate-900">
             Home
           </Link>
+          <Link href="/products" className="text-slate-600 hover:text-slate-900">
+            Shop
+          </Link>
           {user ? (
             <>
               <Link
