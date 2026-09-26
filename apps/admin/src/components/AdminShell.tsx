@@ -9,6 +9,7 @@ interface AdminShellProps {
 
 const navItems = [
   { href: "/dashboard", label: "Dashboard" },
+  { href: "/users", label: "Users" },
   { href: "/profile", label: "Profile" },
 ];
 

@@ -1,4 +1,11 @@
-import { AuthResponse, UserProfile } from "@sneakerhead/types";
+import {
+  AdminUpdateUserPayload,
+  AuthResponse,
+  PaginatedUsersResponse,
+  UserProfile,
+  UserRole,
+  UserStatus,
+} from "@sneakerhead/types";
 import { API_URL } from "./constants";
 
 export async function apiFetch<T>(
@@ -73,4 +80,59 @@ export interface AdminDashboard {
 
 export async function getDashboard(accessToken: string): Promise<AdminDashboard> {
   return apiFetch<AdminDashboard>("/admin/dashboard", { accessToken });
+}
+
+export interface ListUsersParams {
+  page?: number;
+  limit?: number;
+  search?: string;
+  role?: UserRole | "";
+  status?: UserStatus | "";
+}
+
+export async function listUsers(
+  accessToken: string,
+  params: ListUsersParams = {},
+): Promise<PaginatedUsersResponse> {
+  const query = new URLSearchParams();
+  if (params.page) query.set("page", String(params.page));
+  if (params.limit) query.set("limit", String(params.limit));
+  if (params.search?.trim()) query.set("search", params.search.trim());
+  if (params.role) query.set("role", params.role);
+  if (params.status) query.set("status", params.status);
+
+  const qs = query.toString();
+  return apiFetch<PaginatedUsersResponse>(
+    `/admin/users${qs ? `?${qs}` : ""}`,
+    { accessToken },
+  );
+}
+
+export async function getUser(
+  accessToken: string,
+  userId: string,
+): Promise<UserProfile> {
+  return apiFetch<UserProfile>(`/admin/users/${userId}`, { accessToken });
+}
+
+export async function updateUser(
+  accessToken: string,
+  userId: string,
+  payload: AdminUpdateUserPayload,
+): Promise<UserProfile> {
+  return apiFetch<UserProfile>(`/admin/users/${userId}`, {
+    method: "PATCH",
+    accessToken,
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function forceLogoutUser(
+  accessToken: string,
+  userId: string,
+): Promise<{ message: string; revokedSessions: number }> {
+  return apiFetch(`/admin/users/${userId}/force-logout`, {
+    method: "POST",
+    accessToken,
+  });
 }
