@@ -23,6 +23,16 @@ Implemented features:
 - Redis-backed auth rate limiting
 - Admin login audit logging
 
+## Phase 2 — Admin user management
+
+Implemented features:
+
+- Admin users list with search, role/status filters, and pagination
+- User detail page: edit name, role (super admin), and status
+- Force logout (revoke all refresh tokens)
+- Audit log entries for admin user updates and force logout
+- Seeded sample customers for local testing
+
 ## Getting started
 
 ### Prerequisites

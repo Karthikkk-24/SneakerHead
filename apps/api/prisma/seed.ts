@@ -27,7 +27,48 @@ async function main() {
     },
   });
 
+  const customerPasswordHash = await bcrypt.hash("Customer123!", 12);
+
+  const sampleCustomers = [
+    {
+      email: "jane@example.com",
+      name: "Jane Customer",
+      status: UserStatus.ACTIVE,
+    },
+    {
+      email: "pending@example.com",
+      name: "Pending User",
+      status: UserStatus.PENDING_VERIFICATION,
+    },
+    {
+      email: "disabled@example.com",
+      name: "Disabled User",
+      status: UserStatus.DISABLED,
+    },
+  ];
+
+  for (const customer of sampleCustomers) {
+    await prisma.user.upsert({
+      where: { email: customer.email },
+      update: {
+        name: customer.name,
+        status: customer.status,
+        role: UserRole.CUSTOMER,
+        passwordHash: customerPasswordHash,
+      },
+      create: {
+        email: customer.email,
+        name: customer.name,
+        status: customer.status,
+        role: UserRole.CUSTOMER,
+        passwordHash: customerPasswordHash,
+        emailVerified: customer.status === UserStatus.ACTIVE,
+      },
+    });
+  }
+
   console.log(`Seeded admin user: ${adminEmail}`);
+  console.log("Seeded sample customers: jane@example.com / Customer123!");
 }
 
 main()

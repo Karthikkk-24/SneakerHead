@@ -37,3 +37,21 @@ export interface ApiError {
   message: string;
   error?: string;
 }
+
+export interface PaginatedMeta {
+  page: number;
+  limit: number;
+  total: number;
+  totalPages: number;
+}
+
+export interface PaginatedUsersResponse {
+  data: UserProfile[];
+  meta: PaginatedMeta;
+}
+
+export interface AdminUpdateUserPayload {
+  role?: UserRole;
+  status?: UserStatus;
+  name?: string;
+}
