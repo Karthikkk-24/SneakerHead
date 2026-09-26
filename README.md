@@ -33,6 +33,19 @@ Implemented features:
 - Audit log entries for admin user updates and force logout
 - Seeded sample customers for local testing
 
+## Phase 3 — Catalog
+
+Implemented features:
+
+- Categories CRUD (admin) + public category listing
+- Products with variants (size/color/SKU/price/stock) and images
+- Product statuses: `DRAFT`, `ACTIVE`, `ARCHIVED`
+- Bulk status updates and stock adjustments
+- Local image upload endpoint (`POST /admin/media/upload`) served from `/uploads`
+- Customer storefront: home, shop filters, category pages, product detail (PDP)
+- SEO metadata + sitemap stub for active products
+- Seeded sample catalog (3 categories, 4 products)
+
 ## Getting started
 
 ### Prerequisites
@@ -59,9 +72,8 @@ cp .env.example apps/api/.env
 cp .env.example apps/web/.env.local
 cp .env.example apps/admin/.env.local
 
-# Create database user/db (if not using Docker)
-sudo -u postgres psql -c "CREATE USER sneakerhead WITH PASSWORD 'sneakerhead';"
-sudo -u postgres psql -c "CREATE DATABASE sneakerhead OWNER sneakerhead;"
+# Start Postgres (port 5433) + Redis
+docker compose up -d
 
 # Run migrations and seed admin user
 pnpm db:migrate

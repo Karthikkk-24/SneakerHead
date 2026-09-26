@@ -136,3 +136,142 @@ export async function forceLogoutUser(
     accessToken,
   });
 }
+
+export async function listCategories(accessToken: string) {
+  return apiFetch<import("@sneakerhead/types").CategorySummary[]>(
+    "/admin/categories",
+    { accessToken },
+  );
+}
+
+export async function createCategory(
+  accessToken: string,
+  payload: import("@sneakerhead/types").CreateCategoryPayload,
+) {
+  return apiFetch<import("@sneakerhead/types").CategorySummary>(
+    "/admin/categories",
+    {
+      method: "POST",
+      accessToken,
+      body: JSON.stringify(payload),
+    },
+  );
+}
+
+export async function updateCategory(
+  accessToken: string,
+  id: string,
+  payload: import("@sneakerhead/types").UpdateCategoryPayload,
+) {
+  return apiFetch<import("@sneakerhead/types").CategorySummary>(
+    `/admin/categories/${id}`,
+    {
+      method: "PATCH",
+      accessToken,
+      body: JSON.stringify(payload),
+    },
+  );
+}
+
+export async function deleteCategory(accessToken: string, id: string) {
+  return apiFetch<{ message: string }>(`/admin/categories/${id}`, {
+    method: "DELETE",
+    accessToken,
+  });
+}
+
+export interface ListProductsParams {
+  page?: number;
+  limit?: number;
+  search?: string;
+  status?: string;
+  categoryId?: string;
+}
+
+export async function listAdminProducts(
+  accessToken: string,
+  params: ListProductsParams = {},
+) {
+  const query = new URLSearchParams();
+  if (params.page) query.set("page", String(params.page));
+  if (params.limit) query.set("limit", String(params.limit));
+  if (params.search?.trim()) query.set("search", params.search.trim());
+  if (params.status) query.set("status", params.status);
+  if (params.categoryId) query.set("categoryId", params.categoryId);
+  const qs = query.toString();
+  return apiFetch<import("@sneakerhead/types").PaginatedProductsResponse>(
+    `/admin/products${qs ? `?${qs}` : ""}`,
+    { accessToken },
+  );
+}
+
+export async function getAdminProduct(accessToken: string, id: string) {
+  return apiFetch<import("@sneakerhead/types").ProductDetail>(
+    `/admin/products/${id}`,
+    { accessToken },
+  );
+}
+
+export async function createProduct(
+  accessToken: string,
+  payload: import("@sneakerhead/types").CreateProductPayload,
+) {
+  return apiFetch<import("@sneakerhead/types").ProductDetail>(
+    "/admin/products",
+    {
+      method: "POST",
+      accessToken,
+      body: JSON.stringify(payload),
+    },
+  );
+}
+
+export async function updateProduct(
+  accessToken: string,
+  id: string,
+  payload: import("@sneakerhead/types").UpdateProductPayload,
+) {
+  return apiFetch<import("@sneakerhead/types").ProductDetail>(
+    `/admin/products/${id}`,
+    {
+      method: "PATCH",
+      accessToken,
+      body: JSON.stringify(payload),
+    },
+  );
+}
+
+export async function bulkUpdateProductStatus(
+  accessToken: string,
+  payload: import("@sneakerhead/types").BulkProductStatusPayload,
+) {
+  return apiFetch<{ updated: number; status: string }>(
+    "/admin/products/bulk-status",
+    {
+      method: "PATCH",
+      accessToken,
+      body: JSON.stringify(payload),
+    },
+  );
+}
+
+export async function adjustStock(
+  accessToken: string,
+  payload: import("@sneakerhead/types").AdjustStockPayload,
+) {
+  return apiFetch<import("@sneakerhead/types").ProductVariantDto>(
+    "/admin/products/stock",
+    {
+      method: "PATCH",
+      accessToken,
+      body: JSON.stringify(payload),
+    },
+  );
+}
+
+export async function deleteProduct(accessToken: string, id: string) {
+  return apiFetch<{ message: string }>(`/admin/products/${id}`, {
+    method: "DELETE",
+    accessToken,
+  });
+}

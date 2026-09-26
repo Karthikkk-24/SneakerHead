@@ -111,3 +111,62 @@ export async function resetPasswordRequest(
     body: JSON.stringify({ token, password }),
   });
 }
+
+export async function listCatalogCategories() {
+  return apiFetch<import("@sneakerhead/types").CategorySummary[]>(
+    "/catalog/categories",
+  );
+}
+
+export async function getCatalogCategory(slug: string) {
+  return apiFetch<import("@sneakerhead/types").CategorySummary>(
+    `/catalog/categories/${slug}`,
+  );
+}
+
+export interface CatalogProductParams {
+  page?: number;
+  limit?: number;
+  search?: string;
+  categorySlug?: string;
+  minPriceCents?: number;
+  maxPriceCents?: number;
+  sort?: string;
+  featured?: boolean;
+}
+
+export async function listCatalogProducts(params: CatalogProductParams = {}) {
+  const query = new URLSearchParams();
+  if (params.page) query.set("page", String(params.page));
+  if (params.limit) query.set("limit", String(params.limit));
+  if (params.search?.trim()) query.set("search", params.search.trim());
+  if (params.categorySlug) query.set("categorySlug", params.categorySlug);
+  if (params.minPriceCents !== undefined) {
+    query.set("minPriceCents", String(params.minPriceCents));
+  }
+  if (params.maxPriceCents !== undefined) {
+    query.set("maxPriceCents", String(params.maxPriceCents));
+  }
+  if (params.sort) query.set("sort", params.sort);
+  if (params.featured !== undefined) {
+    query.set("featured", String(params.featured));
+  }
+  const qs = query.toString();
+  return apiFetch<import("@sneakerhead/types").PaginatedProductsResponse>(
+    `/catalog/products${qs ? `?${qs}` : ""}`,
+  );
+}
+
+export async function getCatalogProduct(slug: string) {
+  return apiFetch<import("@sneakerhead/types").ProductDetail>(
+    `/catalog/products/${slug}`,
+  );
+}
+
+export function formatPrice(cents: number | null | undefined) {
+  if (cents == null) return "—";
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(cents / 100);
+}
